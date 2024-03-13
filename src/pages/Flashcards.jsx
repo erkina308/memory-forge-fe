@@ -16,7 +16,7 @@ export default function Flashcards() {
         setFlashcards(flashcards);
       });
     }
-  }, [needLogout, navigate]);
+  }, [needLogout]);
 
   return (
     <section>

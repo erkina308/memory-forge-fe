@@ -6,11 +6,13 @@ import PrivateRoute from "../authentication/PrivateRoute";
 import Login from "./pages/authPages/Login";
 import Dashboard from "./pages/Dashboard";
 import Flashcards from "./pages/Flashcards";
+import Homepage from "./pages/Homepage";
 
 function App() {
   return (
     <Fragment>
       <Routes>
+        <Route path="/" element={<Homepage />} />
         {/* <Route path="/register" element={<Register />} /> */}
         <Route path="/login" element={<Login />} />
         {/* Redirect to login if user tries to access private routes without authentication */}
