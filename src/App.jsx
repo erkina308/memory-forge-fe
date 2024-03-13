@@ -6,6 +6,7 @@ import PrivateRoute from "../authentication/PrivateRoute";
 import Login from "./pages/authPages/Login";
 import Dashboard from "./pages/Dashboard";
 import Flashcards from "./pages/Flashcards";
+import FlashcardRevision from "./pages/FlashcardRevision";
 import Homepage from "./pages/Homepage";
 
 function App() {
@@ -29,6 +30,14 @@ function App() {
           element={
             <PrivateRoute>
               <Flashcards />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/revision-flashcards"
+          element={
+            <PrivateRoute>
+              <FlashcardRevision />
             </PrivateRoute>
           }
         />
