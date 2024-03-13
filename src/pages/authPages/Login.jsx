@@ -21,7 +21,7 @@ const Login = () => {
       localStorage.setItem("token", token);
 
       // Redirect to the dashboard or any other protected route
-      navigate("/dashboard");
+      navigate(`/flashcards`); //change this later to /dashboard
     } catch (error) {
       console.error("Login failed:", error);
       // Handle login error, e.g., display an error message to the user

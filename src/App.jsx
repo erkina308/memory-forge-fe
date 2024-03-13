@@ -5,6 +5,7 @@ import PrivateRoute from "../authentication/PrivateRoute";
 // import Register from "./pages/authPages/Register";
 import Login from "./pages/authPages/Login";
 import Dashboard from "./pages/Dashboard";
+import Flashcards from "./pages/Flashcards";
 
 function App() {
   return (
@@ -14,10 +15,18 @@ function App() {
         <Route path="/login" element={<Login />} />
         {/* Redirect to login if user tries to access private routes without authentication */}
         <Route
-          path="/api/:user/dashboard"
+          path="/dashboard"
           element={
             <PrivateRoute>
               <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/flashcards"
+          element={
+            <PrivateRoute>
+              <Flashcards />
             </PrivateRoute>
           }
         />
