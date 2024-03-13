@@ -1,4 +1,5 @@
 export default function Flashcard({ card }) {
+  console.log(card, "<--- card in flashcard");
   return (
     <div>
       <p>{card.question}</p>
