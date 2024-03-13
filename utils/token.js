@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const memoryForgeApi = axios.create({
-  baseURL: "https://localhost:3000/api",
+  baseURL: "http://localhost:3000/api",
 });
 
 // Add a request interceptor
