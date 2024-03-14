@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { fetchFlashcards } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 import FlippableCard from "../components/FlippableCard";
+import { IoCaretBack } from "react-icons/io5";
+import { IoCaretForward } from "react-icons/io5";
 
 export default function FlashcardRevision() {
   const [flashcards, setFlashcards] = useState([]);
@@ -46,12 +48,14 @@ export default function FlashcardRevision() {
 
       <section id="flashcard-revision">
         <FlippableCard card={flashcards[currentCardIndex]} />
-        <button className="previous-button" onClick={handlePreviousCard}>
-          previous
-        </button>
-        <button className="next-button" onClick={handleNextCard}>
-          next
-        </button>
+        <div className="buttons_container">
+          <button className="previous-button" onClick={handlePreviousCard}>
+            <IoCaretBack />
+          </button>
+          <button className="next-button" onClick={handleNextCard}>
+            <IoCaretForward />
+          </button>
+        </div>
       </section>
     </div>
   );

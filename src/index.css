@@ -78,18 +78,15 @@
   margin: 1.75rem;
 }
 
-/* 
-.flashcard-and-buttons-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  position: relative;
-  gap: 2rem;
-}
-
 .previous-button,
 .next-button {
-  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: rgb(53, 53, 53) 0.1rem solid;
+  background: none;
+
   padding: 10px 20px;
   margin: 0 10px;
   font-size: 1.5rem;
@@ -97,7 +94,13 @@
   border-radius: 8px;
 }
 
-*/
+.previous-button:hover,
+.next-button:hover {
+  cursor: pointer;
+  background: rgb(53, 53, 53);
+  color: white;
+  border: rgb(255, 255, 255) 0.1rem solid;
+}
 
 #flashcard-revision {
   width: 100vw;
@@ -105,8 +108,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
+.buttons_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+}
 /* TEST */
 
 .flippable-card-container {
@@ -142,19 +152,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
 
   font-weight: 800;
-  font-size: 60px;
-  color: seagreen;
+  font-size: 1.75rem;
+  color: white;
   text-shadow: 2px, 2px, 10px, rgba(0, 0, 0, 0.9);
 }
 
 .card-front {
-  background-color: antiquewhite;
+  background: linear-gradient(to bottom, #2193b0, #6dd5ed);
 }
 
 .card-back {
-  background-color: aquamarine;
+  background: linear-gradient(to bottom, #2193b0, #6dd5ed);
   transform: rotateY(180deg);
 }
 
