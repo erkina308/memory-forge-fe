@@ -29,26 +29,32 @@ const Login = () => {
   };
 
   return (
-    <section>
-      <nav>
-        <Link to={"/register"}>Create Account</Link>
+    <section id="login">
+      <nav className="navbar">
+        <div className="nav-container">
+          <Link to={"/register"}>Create Account</Link>
+        </div>
       </nav>
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Login</button>
-      </form>
+      <div className="login-container">
+        <h2 className="title">Login</h2>
+        <div className="login-form">
+          <form className="form-for-login" onSubmit={handleLogin}>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button type="submit">Login</button>
+          </form>
+        </div>
+      </div>
     </section>
   );
 };

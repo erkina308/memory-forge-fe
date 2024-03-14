@@ -1,4 +1,3 @@
-import "./App.css";
 import { Fragment } from "react";
 import { Routes, Route } from "react-router-dom";
 import PrivateRoute from "../authentication/PrivateRoute";

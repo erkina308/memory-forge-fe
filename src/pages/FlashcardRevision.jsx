@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchFlashcards } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
-import Flashcard from "../cards/Flashcard";
+import FlippableCard from "../components/FlippableCard";
 
 export default function FlashcardRevision() {
   const [flashcards, setFlashcards] = useState([]);
@@ -36,23 +36,23 @@ export default function FlashcardRevision() {
 
   if (isLoading) return <p>Page Loading...</p>;
   return (
-    <section>
-      <div>
-        <div>
-          {console.log(flashcards, "<-- flashcards in flashcard revision")}
-          {console.log(
-            flashcards[currentCardIndex],
-            "<--- flashcard current card index"
-          )}
-          {console.log(currentCardIndex, "<--- current card index")}
-          <Flashcard card={flashcards[currentCardIndex]} />
-        </div>
-      </div>
-      <div>
-        <button onClick={handleNextCard}>next</button>
-        <button onClick={handlePreviousCard}>previous</button>
-      </div>
-      <button onClick={() => setNeedLogout(true)}>Log out</button>
-    </section>
+    <div>
+      <header className="navbar">
+        <h1 className="title logo">Memory Forge</h1>
+        <button className="logout-button" onClick={() => setNeedLogout(true)}>
+          Log out
+        </button>
+      </header>
+
+      <section id="flashcard-revision">
+        <FlippableCard card={flashcards[currentCardIndex]} />
+        <button className="previous-button" onClick={handlePreviousCard}>
+          previous
+        </button>
+        <button className="next-button" onClick={handleNextCard}>
+          next
+        </button>
+      </section>
+    </div>
   );
 }
