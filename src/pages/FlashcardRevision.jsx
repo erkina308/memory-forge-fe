@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { fetchFlashcards } from "../../utils/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FlippableCard from "../components/FlippableCard";
 import { IoCaretBack } from "react-icons/io5";
 import { IoCaretForward } from "react-icons/io5";
@@ -40,6 +40,9 @@ export default function FlashcardRevision() {
   return (
     <div>
       <header className="navbar">
+        <button className="logout-button">
+          <Link to={"/flashcards"}>Back</Link>
+        </button>
         <h1 className="title logo">Memory Forge</h1>
         <button className="logout-button" onClick={() => setNeedLogout(true)}>
           Log out

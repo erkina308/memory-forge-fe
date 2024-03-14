@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchFlashcards } from "../../utils/api";
 import { Link, useNavigate } from "react-router-dom";
+import FlippableCard from "../components/FlippableCard";
 
 export default function Flashcards() {
   const [flashcards, setFlashcards] = useState([]);
@@ -25,21 +26,33 @@ export default function Flashcards() {
   if (isLoading) return <p>Page Loading...</p>;
   return (
     <section>
-      <h2>Create flashcard</h2>
-      <h2>
-        <Link to={"/revision-flashcards"}>Revision</Link>
-      </h2>
-      {flashcards.map((flashcard) => {
-        return (
-          <div key={flashcard.flashcard_id}>
-            <ul>
-              <li>{`Question: ${flashcard.question}`}</li>
-              <li>{`Answer: ${flashcard.answer}`}</li>
-            </ul>
-          </div>
-        );
-      })}
-      <button onClick={() => setNeedLogout(true)}>Log out</button>
+      <header className="navbar">
+        <h1 className="title logo">Memory Forge</h1>
+        <button className="logout-button" onClick={() => setNeedLogout(true)}>
+          Log out
+        </button>
+      </header>
+      <div className="flashcards-links-container">
+        <h2>
+          <Link to={"/create-flashcard"}>Create flashcard</Link>
+        </h2>
+        <h2>
+          <Link to={"/revision-flashcards"}>Revision</Link>
+        </h2>
+      </div>
+      <div className="links-listedcards-container">
+        {flashcards.map((card) => {
+          return (
+            <div key={card.flashcard_id}>
+              <ul className="flashcard-list">
+                <li>
+                  <FlippableCard card={card} />
+                </li>
+              </ul>
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 }
