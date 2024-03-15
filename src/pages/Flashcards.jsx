@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { fetchFlashcards } from "../../utils/api";
 import { Link, useNavigate } from "react-router-dom";
 import FlippableCard from "../components/FlippableCard";
+import CreateFlashcard from "./CreateFlashcard";
 
 export default function Flashcards() {
   const [flashcards, setFlashcards] = useState([]);
@@ -33,12 +34,14 @@ export default function Flashcards() {
         </button>
       </header>
       <div className="flashcards-links-container">
-        <h2>
-          <Link to={"/create-flashcard"}>Create flashcard</Link>
-        </h2>
-        <h2>
-          <Link to={"/revision-flashcards"}>Revision</Link>
-        </h2>
+        <ul>
+          <li>
+            <Link to={"/create-flashcard"}>Create flashcard</Link>
+          </li>
+          <li>
+            <Link to={"/revision-flashcards"}>Revision</Link>
+          </li>
+        </ul>
       </div>
       <div className="links-listedcards-container">
         {flashcards.map((card) => {

@@ -7,7 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Flashcards from "./pages/Flashcards";
 import FlashcardRevision from "./pages/FlashcardRevision";
 import Homepage from "./pages/Homepage";
-import CreateFlashcard from "./pages/CreateFlashcard";
+// import CreateFlashcard from "./pages/CreateFlashcard";
 
 function App() {
   return (
@@ -41,14 +41,14 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route
+        {/* <Route
           path="/create-flashcard"
           element={
             <PrivateRoute>
               <CreateFlashcard />
             </PrivateRoute>
           }
-        />
+        /> */}
       </Routes>
     </Fragment>
   );
