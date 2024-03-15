@@ -24,6 +24,15 @@ export default function Flashcards() {
     }
   }, [needLogout]);
 
+  //get the right id for the key when rendering, used in the .map below
+  function getKey(instance) {
+    if (instance.tempId) {
+      return instance.tempId;
+    } else {
+      return instance.flashcard_id;
+    }
+  }
+
   //rendering flashcards if page has loaded
   if (isLoading) return <p>Page Loading...</p>;
   return (
@@ -52,7 +61,7 @@ export default function Flashcards() {
       <div className="links-listedcards-container">
         {flashcards.map((card) => {
           return (
-            <div key={card.flashcard_id}>
+            <div key={getKey(card)}>
               <ul className="flashcard-list">
                 <li>
                   <FlippableCard card={card} />

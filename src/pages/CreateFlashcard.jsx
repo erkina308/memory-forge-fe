@@ -4,17 +4,20 @@ import { postFlashcard } from "../../utils/api";
 export default function CreateFlashcard({ flashcards, setFlashcards }) {
   const [questionInput, setQuestionInput] = useState("");
   const [answerInput, setAnswerInput] = useState("");
-  const [err, setErr] = useState(null);
+  // const [err, setErr] = useState(null);
 
+  const flashcard_id = new Date(); //for the new flashcard, as it is being optimistically rendered and requires an id for the key in the flashcards page
   const input = {
     question: questionInput,
     answer: answerInput,
   };
+
   function handleFlashcardSubmit(e) {
     e.preventDefault();
     setAnswerInput("");
     setQuestionInput("");
-    setFlashcards([input, ...flashcards]);
+    const newFlashcard = { ...input, flashcard_id };
+    setFlashcards([newFlashcard, ...flashcards]);
     postFlashcard(input);
   }
 
