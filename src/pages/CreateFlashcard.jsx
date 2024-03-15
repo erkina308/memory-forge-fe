@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { postFlashcard } from "../../utils/api";
 
-export default function CreateFlashcard() {
+export default function CreateFlashcard({ flashcards, setFlashcards }) {
   const [questionInput, setQuestionInput] = useState("");
   const [answerInput, setAnswerInput] = useState("");
+  const [err, setErr] = useState(null);
 
   const input = {
     question: questionInput,
@@ -13,6 +14,7 @@ export default function CreateFlashcard() {
     e.preventDefault();
     setAnswerInput("");
     setQuestionInput("");
+    setFlashcards([input, ...flashcards]);
     postFlashcard(input);
   }
 
@@ -20,7 +22,7 @@ export default function CreateFlashcard() {
     <section>
       <form onSubmit={handleFlashcardSubmit}>
         <label htmlFor="newQuestion">Question</label>
-        <input
+        <textarea
           name="newQuestion"
           id="newQuestion"
           value={questionInput}
