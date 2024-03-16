@@ -38,7 +38,10 @@ export default function Flashcards() {
   return (
     <section>
       <header className="navbar">
-        <h1 className="title logo">Memory Forge</h1>
+        <h1 className="title logo">
+          <Link to={"/dashboard"}>Memory Forge</Link>
+        </h1>
+
         <button className="logout-button" onClick={() => setNeedLogout(true)}>
           Log out
         </button>
