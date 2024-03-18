@@ -19,10 +19,10 @@ export default function Quizzes() {
   return (
     <section>
       <div>
-        <Link to={"/quiz"}>Start Quiz</Link>
+        <Link to={"/quizzes/quiz"}>Start Quiz</Link>
       </div>
       <div>
-        <Link to={"/view-quiz"}>View Questions and Answers</Link>
+        <Link to={"/quizzes/view-quizzes"}>View Questions and Answers</Link>
       </div>
       <div>
         {quizzes.map((quiz) => {

@@ -9,6 +9,7 @@ import FlashcardRevision from "./pages/FlashcardRevision";
 import Homepage from "./pages/Homepage";
 import Quizzes from "./pages/Quizzes";
 import ViewQuiz from "./pages/ViewQuiz";
+import EditQuiz from "./pages/EditQuiz";
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
             </PrivateRoute>
           }
         />
+
+        {/* Flashcard routes */}
+
         <Route
           path="/flashcards"
           element={
@@ -42,6 +46,9 @@ function App() {
             </PrivateRoute>
           }
         />
+
+        {/* Quiz routes */}
+
         <Route
           path="/quizzes"
           element={
@@ -51,7 +58,7 @@ function App() {
           }
         />
         {/* <Route
-          path="/quiz"
+          path="/quizzes/quiz"
           element={
             <PrivateRoute>
               <Quiz />
@@ -59,10 +66,18 @@ function App() {
           }
         /> */}
         <Route
-          path="/view-quiz"
+          path="/quizzes/view-quizzes"
           element={
             <PrivateRoute>
               <ViewQuiz />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/quizzes/edit-quiz"
+          element={
+            <PrivateRoute>
+              <EditQuiz />
             </PrivateRoute>
           }
         />

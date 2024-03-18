@@ -21,3 +21,27 @@ export default function QuizCard({ quiz, quizAnswer }) {
     </div>
   );
 }
+
+{
+  /* <div className="quiz-card-container">
+  <div className="quiz-card">
+    <div>
+      <h1 className="quiz-card-front">{quiz.question}</h1>
+    </div>
+    <div>
+      {quiz.choices.map((choice) => {
+        return (
+          <div className="quiz-card-front" key={choice}>
+            <ul>
+              <li>{choice}</li>
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+    <div>
+      <h2 className="quiz-card-front">{quiz.correct_answer}</h2>
+    </div>
+  </div>
+</div>; */
+}
