@@ -8,14 +8,6 @@
   margin: 1.75rem;
 }
 
-.logout-button {
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 8px;
-  margin: 1.75rem;
-}
-
 .previous-button,
 .next-button {
   display: flex;

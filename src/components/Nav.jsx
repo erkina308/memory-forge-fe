@@ -6,6 +6,9 @@ export default function Nav() {
     <StyledNav>
       <ul>
         <li>
+          <Link to={"/dashboard"}>Dashboard</Link>
+        </li>
+        <li>
           <Link to={"/flashcards"}>Flashcards</Link>
         </li>
         <li>
