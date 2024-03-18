@@ -49,6 +49,7 @@ export default function ViewQuiz() {
               </div>
             </div>
             <button
+              className="edit-quiz-button"
               onClick={() => {
                 navigate("/quizzes/edit-quiz", { state: { quiz } });
               }}

@@ -87,3 +87,12 @@
   list-style: none;
   color: white;
 }
+
+.edit-quiz-button {
+  background-color: #0077b5;
+  color: #fff;
+  padding: 10px 20px;
+  border: 2px solid #69a3d0;
+  border-radius: 8px;
+  cursor: pointer;
+}
