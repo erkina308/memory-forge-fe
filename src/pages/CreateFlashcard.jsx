@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { postFlashcard } from "../../utils/api";
+import { postFlashcard } from "../../utils/flashcardApi";
 
 export default function CreateFlashcard({ flashcards, setFlashcards }) {
   const [questionInput, setQuestionInput] = useState("");

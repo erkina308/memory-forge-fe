@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Flashcards from "./pages/Flashcards";
 import FlashcardRevision from "./pages/FlashcardRevision";
 import Homepage from "./pages/Homepage";
+import Quizzes from "./pages/Quizzes";
 
 function App() {
   return (
@@ -37,6 +38,14 @@ function App() {
           element={
             <PrivateRoute>
               <FlashcardRevision />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/quizzes"
+          element={
+            <PrivateRoute>
+              <Quizzes />
             </PrivateRoute>
           }
         />

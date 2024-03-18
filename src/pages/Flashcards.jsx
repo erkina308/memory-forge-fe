@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchFlashcards } from "../../utils/api";
+import { fetchFlashcards } from "../../utils/flashcardApi";
 import { Link, useNavigate } from "react-router-dom";
 import FlippableCard from "../components/FlippableCard";
 import CreateFlashcard from "./CreateFlashcard";

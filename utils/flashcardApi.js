@@ -22,8 +22,8 @@ export const fetchFlashcards = async () => {
     const res = await memoryForgeApi.get(`/${user_id}/flashcards`);
     const { flashcards } = res.data;
     return flashcards;
-  } catch (error) {
-    console.error("Error:", error);
+  } catch (err) {
+    console.error("Error:", err);
   }
 };
 
