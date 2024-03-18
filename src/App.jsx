@@ -8,6 +8,7 @@ import Flashcards from "./pages/Flashcards";
 import FlashcardRevision from "./pages/FlashcardRevision";
 import Homepage from "./pages/Homepage";
 import Quizzes from "./pages/Quizzes";
+import ViewQuiz from "./pages/ViewQuiz";
 
 function App() {
   return (
@@ -46,6 +47,22 @@ function App() {
           element={
             <PrivateRoute>
               <Quizzes />
+            </PrivateRoute>
+          }
+        />
+        {/* <Route
+          path="/quiz"
+          element={
+            <PrivateRoute>
+              <Quiz />
+            </PrivateRoute>
+          }
+        /> */}
+        <Route
+          path="/view-quiz"
+          element={
+            <PrivateRoute>
+              <ViewQuiz />
             </PrivateRoute>
           }
         />

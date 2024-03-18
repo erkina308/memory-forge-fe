@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchQuizzes } from "../../utils/quizzesApi";
+import { Link } from "react-router-dom";
+import QuizCard from "../cards/QuizCard";
 
 export default function Quizzes() {
   const [quizzes, setQuizzes] = useState([]);
@@ -16,27 +18,21 @@ export default function Quizzes() {
 
   return (
     <section>
-      {quizzes.map((quiz) => {
-        return (
-          <div className="quiz-container" key={quiz.quiz_id}>
-            <ul>
-              <li>{quiz.question}</li>
-              <li>
-                {quiz.choices.map((choice) => {
-                  return (
-                    <div key={choice}>
-                      <ul>
-                        <li>{choice}</li>
-                      </ul>
-                    </div>
-                  );
-                })}
-              </li>
-              <li>{quiz.correct_answer}</li>
-            </ul>
-          </div>
-        );
-      })}
+      <div>
+        <Link to={"/quiz"}>Start Quiz</Link>
+      </div>
+      <div>
+        <Link to={"/view-quiz"}>View Questions and Answers</Link>
+      </div>
+      <div>
+        {quizzes.map((quiz) => {
+          return (
+            <div key={quiz.quiz_id}>
+              <QuizCard quiz={quiz} quizAnswer={quiz.correct_answer} />
+            </div>
+          );
+        })}
+      </div>
     </section>
   );
 }
