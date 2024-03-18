@@ -50,7 +50,7 @@ export const postFlashcard = async (input) => {
     });
     const { flashcard } = res.data;
     return flashcard;
-  } catch (error) {
-    console.error("Error:", error);
+  } catch (err) {
+    console.error("Error:", err);
   }
 };

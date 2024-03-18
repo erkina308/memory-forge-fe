@@ -22,6 +22,8 @@ export default function QuizCard({ quiz, quizAnswer }) {
   );
 }
 
+//need to bring the quiz card format from the ViewQuiz.jsx and the handleChoice functionality from this page when actually interacting and using the quizzes, this page should just become the navigation page to view quizzes, edit quizzes, delete quizzes
+
 {
   /* <div className="quiz-card-container">
   <div className="quiz-card">

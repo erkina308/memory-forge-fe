@@ -1,17 +1,12 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { patchQuiz } from "../../utils/quizzesApi";
 
 export default function EditQuiz() {
   const location = useLocation();
-  const { question, choices, correct_answer } = location.state.quiz;
+  const navigate = useNavigate();
+  const { question, choices, correct_answer, quiz_id } = location.state.quiz;
 
-  //states for form
-  const [newQuestion, setNewQuestion] = useState(question);
-  const [choiceOne, setChoiceOne] = useState(choices[0]);
-  const [choiceTwo, setChoiceTwo] = useState(choices[1]);
-  const [choiceThree, setChoiceThree] = useState(choices[2]);
-  const [choiceFour, setChoiceFour] = useState(choices[3]);
-  const [newAnswer, setNewAnswer] = useState(correct_answer);
   //states for save button
   const [inputQuestion, setInputQuestion] = useState(question);
   const [inputChoiceOne, setInputChoiceOne] = useState(choices[0]);
@@ -46,8 +41,26 @@ export default function EditQuiz() {
   //form submit for patch
   function handleEditQuizSubmit(e) {
     e.preventDefault();
-    console.log(input);
+    if (
+      input.question === question &&
+      input.choices[0] === choices[0] &&
+      input.choices[1] === choices[1] &&
+      input.choices[2] === choices[2] &&
+      input.choices[3] === choices[3] &&
+      input.correct_answer === correct_answer
+    ) {
+      return;
+    } else {
+      patchQuiz(quiz_id, input);
+      console.log(input);
+    }
   }
+
+  //return to quizzes page
+  function handleReturn() {
+    navigate("/quizzes/view-quizzes");
+  }
+
   return (
     <div>
       <form onSubmit={handleEditQuizSubmit}>
@@ -61,8 +74,8 @@ export default function EditQuiz() {
             backgroundColor:
               focusedTextarea === "currentQuestion" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
           }}
-          value={newQuestion}
-          onChange={(e) => setNewQuestion(e.target.value)}
+          value={inputQuestion}
+          onChange={(e) => setInputQuestion(e.target.value)}
         />
 
         <label htmlFor="currentChoices">Choices: </label>
@@ -75,8 +88,8 @@ export default function EditQuiz() {
             backgroundColor:
               focusedTextarea === "choiceOne" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
           }}
-          value={choiceOne}
-          onChange={(e) => setChoiceOne(e.target.value)}
+          value={inputChoiceOne}
+          onChange={(e) => setInputChoiceOne(e.target.value)}
         />
 
         <textarea
@@ -88,8 +101,8 @@ export default function EditQuiz() {
             backgroundColor:
               focusedTextarea === "choiceTwo" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
           }}
-          value={choiceTwo}
-          onChange={(e) => setChoiceTwo(e.target.value)}
+          value={inputChoiceTwo}
+          onChange={(e) => setInputChoiceTwo(e.target.value)}
         />
 
         <textarea
@@ -101,8 +114,8 @@ export default function EditQuiz() {
             backgroundColor:
               focusedTextarea === "choiceThree" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
           }}
-          value={choiceThree}
-          onChange={(e) => setChoiceThree(e.target.value)}
+          value={inputChoiceThree}
+          onChange={(e) => setInputChoiceThree(e.target.value)}
         />
 
         <textarea
@@ -114,8 +127,8 @@ export default function EditQuiz() {
             backgroundColor:
               focusedTextarea === "choiceFour" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
           }}
-          value={choiceFour}
-          onChange={(e) => setChoiceFour(e.target.value)}
+          value={inputChoiceFour}
+          onChange={(e) => setInputChoiceFour(e.target.value)}
         />
 
         <label htmlFor="currentAnswer">Answer: </label>
@@ -128,25 +141,16 @@ export default function EditQuiz() {
             backgroundColor:
               focusedTextarea === "currentAnswer" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
           }}
-          value={newAnswer}
-          onChange={(e) => setNewAnswer(e.target.value)}
+          value={inputAnswer}
+          onChange={(e) => setInputAnswer(e.target.value)}
         />
 
-        <button
-          type="button"
-          onClick={() => {
-            setInputQuestion(newQuestion);
-            setInputChoiceOne(choiceOne);
-            setInputChoiceTwo(choiceTwo);
-            setInputChoiceThree(choiceThree);
-            setInputChoiceFour(choiceFour);
-            setInputAnswer(newAnswer);
-          }}
-        >
-          Save
-        </button>
+        <button type="submit">Save</button>
         <div>
-          <button type="submit">Return</button>
+          <button type="button" onClick={handleReturn}>
+            Return
+          </button>
+          {/* add an onclick to this to navigate back to the quizzes */}
         </div>
       </form>
     </div>
