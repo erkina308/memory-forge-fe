@@ -3,11 +3,39 @@ import { postQuiz } from "../../utils/quizzesApi";
 
 export default function MakeQuiz({ quizzes, setQuizzes }) {
   const [questionInput, setQuestionInput] = useState("");
-  const [choiceOneInput, setChoiceOneInput] = useState("");
-  const [choiceTwoInput, setChoiceTwoInput] = useState("");
-  const [choiceThreeInput, setChoiceThreeInput] = useState("");
-  const [choiceFourInput, setChoiceFourInput] = useState("");
   const [correctAnswerInput, setCorrectAnswerInput] = useState("");
+  const [submitBtnClicked, setSubmitBtnClicked] = useState(false);
+  const [inputs, setInputs] = useState({
+    choiceOneInput: "",
+    choiceTwoInput: "",
+    choiceThreeInput: "",
+    choiceFourInput: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputs((prevInputs) => ({
+      ...prevInputs,
+      [name]: value,
+    }));
+  };
+
+  //isUnique functin to check if choices are all unique
+  const isUnique = () => {
+    const values = Object.values(inputs);
+    return new Set(values).size === values.length;
+  };
+
+  //reset inputs function to be used in post request
+  const resetInputs = () => {
+    setInputs((prevInputs) => ({
+      ...prevInputs,
+      choiceOneInput: "",
+      choiceTwoInput: "",
+      choiceThreeInput: "",
+      choiceFourInput: "",
+    }));
+  };
 
   //by using react state need to make something appear on page to let user know the correct answer has to match one of the choices
   //also for everything need to give feedback to the user
@@ -15,35 +43,35 @@ export default function MakeQuiz({ quizzes, setQuizzes }) {
   const input = {
     question: questionInput,
     choices: [
-      choiceOneInput,
-      choiceTwoInput,
-      choiceThreeInput,
-      choiceFourInput,
+      inputs.choiceOneInput,
+      inputs.choiceTwoInput,
+      inputs.choiceThreeInput,
+      inputs.choiceFourInput,
     ],
     correct_answer: correctAnswerInput,
   };
 
-  const quiz_id = new Date();
-
-  function handleMakeQuiz(e) {
+  async function handleMakeQuiz(e) {
     e.preventDefault();
-    if (
-      correctAnswerInput === choiceOneInput ||
-      correctAnswerInput === choiceTwoInput ||
-      correctAnswerInput === choiceThreeInput ||
-      correctAnswerInput === choiceFourInput
-    ) {
-      setQuestionInput("");
-      setChoiceOneInput("");
-      setChoiceTwoInput("");
-      setChoiceThreeInput("");
-      setChoiceFourInput("");
-      setCorrectAnswerInput("");
-      const newQuiz = { ...input, quiz_id };
-      setQuizzes([newQuiz, ...quizzes]);
-      postQuiz(input);
+    setSubmitBtnClicked(true);
+    if (isUnique()) {
+      if (
+        correctAnswerInput === inputs.choiceOneInput ||
+        correctAnswerInput === inputs.choiceTwoInput ||
+        correctAnswerInput === inputs.choiceThreeInput ||
+        correctAnswerInput === inputs.choiceFourInput
+      ) {
+        resetInputs();
+        setQuestionInput("");
+        setCorrectAnswerInput("");
+        const data = await postQuiz(input);
+        const newQuiz = { ...input, quiz_id: data.quiz_id };
+        setQuizzes([newQuiz, ...quizzes]);
+      } else {
+        console.log("the correct answer has to match one of the choices");
+        return;
+      }
     } else {
-      console.log("the correct answer has to match one of the choices");
       return;
     }
   }
@@ -51,55 +79,56 @@ export default function MakeQuiz({ quizzes, setQuizzes }) {
   return (
     <section>
       <form onSubmit={handleMakeQuiz}>
-        <label htmlFor="newQuestion">Question</label>
+        <label htmlFor="questionInput">Question</label>
         <textarea
-          name="newQuestion"
-          id="newQuestion"
+          name="questionInput"
+          id="questionInput"
           value={questionInput}
           onChange={(e) => setQuestionInput(e.target.value)}
           required
         />
-        <label htmlFor="choiceOne">Choice 1</label>
+        <label htmlFor="choiceOneInput">Choice 1</label>
         <textarea
-          name="choiceOne"
-          id="choiceOne"
-          value={choiceOneInput}
-          onChange={(e) => setChoiceOneInput(e.target.value)}
+          name="choiceOneInput"
+          id="choiceOneInput"
+          value={inputs.choiceOneInput}
+          onChange={handleChange}
           required
         />
-        <label htmlFor="choiceTwo">Choice 2</label>
+        <label htmlFor="choiceTwoInput">Choice 2</label>
         <textarea
-          name="choiceTwo"
-          id="choiceTwo"
-          value={choiceTwoInput}
-          onChange={(e) => setChoiceTwoInput(e.target.value)}
+          name="choiceTwoInput"
+          id="choiceTwoInput"
+          value={inputs.choiceTwoInput}
+          onChange={handleChange}
           required
         />
-        <label htmlFor="choiceOne">Choice 3</label>
+        <label htmlFor="choiceOneInput">Choice 3</label>
         <textarea
-          name="choiceThree"
-          id="choiceThree"
-          value={choiceThreeInput}
-          onChange={(e) => setChoiceThreeInput(e.target.value)}
+          name="choiceThreeInput"
+          id="choiceThreeInput"
+          value={inputs.choiceThreeInput}
+          onChange={handleChange}
           required
         />
-        <label htmlFor="choiceFour">Choice 4</label>
+        <label htmlFor="choiceFourInput">Choice 4</label>
         <textarea
-          name="choiceFour"
-          id="choiceFour"
-          value={choiceFourInput}
-          onChange={(e) => setChoiceFourInput(e.target.value)}
+          name="choiceFourInput"
+          id="choiceFourInput"
+          value={inputs.choiceFourInput}
+          onChange={handleChange}
           required
         />
         <label htmlFor="correctAnswer">Correct Answer</label>
         <textarea
-          name="correctAnswer"
-          id="correctAnswer"
+          name="correctAnswerInput"
+          id="correctAnswerInput"
           value={correctAnswerInput}
           onChange={(e) => setCorrectAnswerInput(e.target.value)}
           required
         />
         <button type="submit">Make new quiz</button>
+        {submitBtnClicked && !isUnique() && <p>All inputs must be unique.</p>}
       </form>
     </section>
   );

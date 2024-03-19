@@ -18,6 +18,7 @@ export default function ViewQuiz() {
 
   function handleQuizDelete(e, id) {
     e.preventDefault();
+
     const newQuizList = quizzes.filter((quiz) => {
       return quiz.quiz_id !== id;
     });
