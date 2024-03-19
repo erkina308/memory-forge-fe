@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchQuizzes } from "../../utils/quizzesApi";
+import { fetchQuizzes, deleteQuiz } from "../../utils/quizzesApi";
 import Expandable from "../components/Expandable";
 import MakeQuiz from "./MakeQuiz";
 
@@ -15,6 +15,15 @@ export default function ViewQuiz() {
       setIsLoading(false);
     });
   }, []);
+
+  function handleQuizDelete(e, id) {
+    e.preventDefault();
+    const newQuizList = quizzes.filter((quiz) => {
+      return quiz.quiz_id !== id;
+    });
+    setQuizzes(newQuizList);
+    deleteQuiz(id);
+  }
 
   if (isLoading) return <p>Page Loading...</p>;
   return (
@@ -55,14 +64,22 @@ export default function ViewQuiz() {
                 </h2>
               </div>
             </div>
-            <button
-              className="edit-quiz-button"
-              onClick={() => {
-                navigate("/quizzes/edit-quiz", { state: { quiz } });
-              }}
-            >
-              Edit Quiz
-            </button>
+            <div>
+              <button
+                className="edit-quiz-button"
+                onClick={() => {
+                  navigate("/quizzes/edit-quiz", { state: { quiz } });
+                }}
+              >
+                Edit Quiz
+              </button>
+              <button
+                className="edit-quiz-button"
+                onClick={(e) => handleQuizDelete(e, quiz.quiz_id)}
+              >
+                Delete Quiz
+              </button>
+            </div>
           </div>
         );
       })}

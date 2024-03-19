@@ -75,3 +75,23 @@ export const patchQuiz = async (quiz_id, input) => {
     console.error("Error:", err);
   }
 };
+
+//delete quiz in db
+export const deleteQuiz = async (quiz_id) => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    console.error("Token not found, User is not logged in");
+  }
+
+  const decodedToken = jwtDecode(token);
+
+  const user_id = decodedToken.userId;
+
+  try {
+    const res = await memoryForgeApi.delete(`/${user_id}/quizzes/${quiz_id}`);
+    return res;
+  } catch (err) {
+    console.error("Error: ", err);
+  }
+};
