@@ -50,9 +50,16 @@ export default function EditQuiz() {
       input.correct_answer === correct_answer
     ) {
       return;
-    } else {
+    } else if (
+      inputAnswer === inputChoiceOne ||
+      inputAnswer === inputChoiceTwo ||
+      inputAnswer === inputChoiceThree ||
+      inputAnswer === inputChoiceFour
+    ) {
       patchQuiz(quiz_id, input);
-      console.log(input);
+    } else {
+      console.log("correct answer must match one of the choices");
+      return;
     }
   }
 

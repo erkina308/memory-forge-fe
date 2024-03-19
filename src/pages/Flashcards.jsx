@@ -49,7 +49,7 @@ export default function Flashcards() {
       <div className="flashcards-links-container">
         <ul>
           <li>
-            <Expandable>
+            <Expandable text={"Make new flashcard"}>
               <CreateFlashcard
                 flashcards={flashcards}
                 setFlashcards={setFlashcards}

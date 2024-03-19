@@ -24,9 +24,7 @@ export default function Quizzes() {
       <div>
         <Link to={"/quizzes/view-quizzes"}>View Questions and Answers</Link>
       </div>
-      <div>
-        <Link to={"/quizzes/make-a-quiz"}>Make a Quiz</Link>
-      </div>
+      <div>{/* <Link to={"/quizzes/make-a-quiz"}>Make a Quiz</Link> */}</div>
       <div>
         {quizzes.map((quiz) => {
           return (

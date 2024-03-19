@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Expandable({ children }) {
+export default function Expandable({ text, children }) {
   const [isOpen, setIsOpen] = useState(false);
 
   function toggleOpen() {
@@ -9,7 +9,7 @@ export default function Expandable({ children }) {
 
   return (
     <div>
-      <button onClick={toggleOpen}>Make new flashcard</button>
+      <button onClick={toggleOpen}>{text}</button>
       {isOpen ? children : null}
     </div>
   );

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchQuizzes } from "../../utils/quizzesApi";
+import Expandable from "../components/Expandable";
+import MakeQuiz from "./MakeQuiz";
 
 export default function ViewQuiz() {
   const [quizzes, setQuizzes] = useState([]);
@@ -17,6 +19,11 @@ export default function ViewQuiz() {
   if (isLoading) return <p>Page Loading...</p>;
   return (
     <div>
+      <div>
+        <Expandable text={"Make a quiz"}>
+          <MakeQuiz quizzes={quizzes} setQuizzes={setQuizzes} />
+        </Expandable>
+      </div>
       {quizzes.map((quiz) => {
         return (
           <div key={quiz.quiz_id} className="quiz-card-container">

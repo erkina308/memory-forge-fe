@@ -26,6 +26,30 @@ export const fetchQuizzes = async () => {
 };
 
 //post quiz to db
+export const postQuiz = async (input) => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    console.error("Token not found, User is not logged in");
+    return;
+  }
+
+  const decodedToken = jwtDecode(token);
+
+  const user_id = decodedToken.userId;
+
+  try {
+    const res = await memoryForgeApi.post(`/${user_id}/quizzes`, {
+      question: input.question,
+      choices: input.choices,
+      correct_answer: input.correct_answer,
+    });
+    const { quiz } = res.data;
+    return quiz;
+  } catch (err) {
+    console.error("Error:", err);
+  }
+};
 
 //patch quiz in db
 export const patchQuiz = async (quiz_id, input) => {

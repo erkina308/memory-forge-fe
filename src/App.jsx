@@ -10,7 +10,7 @@ import Homepage from "./pages/Homepage";
 import Quizzes from "./pages/Quizzes";
 import ViewQuiz from "./pages/ViewQuiz";
 import EditQuiz from "./pages/EditQuiz";
-import MakeQuiz from "./pages/MakeQuiz";
+// import MakeQuiz from "./pages/MakeQuiz";
 
 function App() {
   return (
@@ -82,14 +82,10 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route
+        {/* <Route
           path="/quizzes/make-a-quiz"
-          element={
-            <PrivateRoute>
-              <MakeQuiz />
-            </PrivateRoute>
-          }
-        />
+          element={<PrivateRoute></PrivateRoute>}
+        /> */}
       </Routes>
     </Fragment>
   );
