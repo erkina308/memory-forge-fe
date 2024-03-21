@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchQuizzes } from "../../utils/quizzesApi";
 import { Link } from "react-router-dom";
-import QuizCard from "../cards/QuizCard";
+import InteractiveQuizCard from "../cards/InteractiveQuizCard";
 
 export default function Quizzes() {
   const [quizzes, setQuizzes] = useState([]);
@@ -29,7 +29,10 @@ export default function Quizzes() {
         {quizzes.map((quiz) => {
           return (
             <div key={quiz.quiz_id}>
-              <QuizCard quiz={quiz} quizAnswer={quiz.correct_answer} />
+              <InteractiveQuizCard
+                quiz={quiz}
+                quizAnswer={quiz.correct_answer}
+              />
             </div>
           );
         })}

@@ -18,8 +18,8 @@
 /* TEST */
 
 .quiz-card-container {
-  height: 400px;
-  width: 600px;
+  height: 500px;
+  width: 800px;
   margin: 2rem;
 }
 
@@ -45,7 +45,7 @@
 .quiz-card-choices {
   height: 100%;
   width: 100%;
-
+  font-size: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,24 +68,36 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 60px 60px;
 
+  padding-top: 2rem;
   margin: 1.5rem;
   gap: 10px;
   background: #0077b5;
 }
 
 .quiz-card-list {
+  /* position: relative; */
   border: 2px solid #69a3d0;
   border-radius: 8px;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   padding: 1.75rem;
   font-weight: 600;
+}
+
+.quiz-card-list textarea {
+  width: 100%; /* Fill the entire width of the parent container */
+  height: 100%; /* Fill the entire height of the parent container */
+  border: none; /* Remove border from the textarea */
+  box-sizing: border-box; /* Include padding and border in the textarea's total width and height */
 }
 
 .quiz-card-list li {
   list-style: none;
   color: white;
+  flex: 1;
 }
 
 .edit-quiz-button {
@@ -95,4 +107,26 @@
   border: 2px solid #69a3d0;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.interactive-quiz-container {
+  padding: 2.5rem 1.75rem;
+}
+
+.editing-text-area {
+  flex: 1;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical;
+  font-family: Arial, sans-serif; /* Use a readable font */
+  font-size: 14px;
+}
+
+.editing-text-area:focus {
+  flex: 1;
+  border-color: #0077b5; /* Change border color on focus */
+  outline: none; /* Remove the default outline */
+  box-shadow: 0 0 5px rgba(0, 119, 181, 0.5); /* Add a subtle box shadow */
 }
