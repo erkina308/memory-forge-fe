@@ -20,7 +20,7 @@ export default function MakeQuiz({ quizzes, setQuizzes }) {
     }));
   };
 
-  //isUnique functin to check if choices are all unique
+  //isUnique function to check if choices are all unique
   const isUnique = () => {
     const values = Object.values(inputs);
     return new Set(values).size === values.length;
@@ -56,6 +56,7 @@ export default function MakeQuiz({ quizzes, setQuizzes }) {
     setSubmitBtnClicked(true);
     if (isUnique()) {
       if (
+        //checking if the correct answer matches at least one of the inputs
         correctAnswerInput === inputs.choiceOneInput ||
         correctAnswerInput === inputs.choiceTwoInput ||
         correctAnswerInput === inputs.choiceThreeInput ||

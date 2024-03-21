@@ -8,25 +8,44 @@ export default function EditQuiz() {
   const { question, choices, correct_answer, quiz_id } = location.state.quiz;
 
   //states for save button
-  const [inputQuestion, setInputQuestion] = useState(question);
-  const [inputChoiceOne, setInputChoiceOne] = useState(choices[0]);
-  const [inputChoiceTwo, setInputChoiceTwo] = useState(choices[1]);
-  const [inputChoiceThree, setInputChoiceThree] = useState(choices[2]);
-  const [inputChoiceFour, setInputChoiceFour] = useState(choices[3]);
-  const [inputAnswer, setInputAnswer] = useState(correct_answer);
+  const [questionInput, setQuestionInput] = useState(question);
+  const [correctAnswerInput, setCorrectAnswerInput] = useState(correct_answer);
+  const [submitBtnClicked, setSubmitBtnClicked] = useState(false);
+  const [inputs, setInputs] = useState({
+    choiceOneInput: choices[0],
+    choiceTwoInput: choices[1],
+    choiceThreeInput: choices[2],
+    choiceFourInput: choices[3],
+  });
+
   //state for focus
   const [focusedTextarea, setFocusedTextarea] = useState(null);
 
+  //handle change for the choices
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInputs((prevInputs) => ({
+      ...prevInputs,
+      [name]: value,
+    }));
+  };
+
+  //isUnique function to check if choices are all unique
+  const isUnique = () => {
+    const values = Object.values(inputs);
+    return new Set(values).size === values.length;
+  };
+
   // input to send off for the patch request
   const input = {
-    question: inputQuestion,
+    question: questionInput,
     choices: [
-      inputChoiceOne,
-      inputChoiceTwo,
-      inputChoiceThree,
-      inputChoiceFour,
+      inputs.choiceOneInput,
+      inputs.choiceTwoInput,
+      inputs.choiceThreeInput,
+      inputs.choiceFourInput,
     ],
-    correct_answer: inputAnswer,
+    correct_answer: correctAnswerInput,
   };
 
   //handle focus and handle blur for the text areas
@@ -41,24 +60,31 @@ export default function EditQuiz() {
   //form submit for patch
   function handleEditQuizSubmit(e) {
     e.preventDefault();
-    if (
-      input.question === question &&
-      input.choices[0] === choices[0] &&
-      input.choices[1] === choices[1] &&
-      input.choices[2] === choices[2] &&
-      input.choices[3] === choices[3] &&
-      input.correct_answer === correct_answer
-    ) {
-      return;
-    } else if (
-      inputAnswer === inputChoiceOne ||
-      inputAnswer === inputChoiceTwo ||
-      inputAnswer === inputChoiceThree ||
-      inputAnswer === inputChoiceFour
-    ) {
-      patchQuiz(quiz_id, input);
+    setSubmitBtnClicked(true);
+    if (isUnique()) {
+      if (
+        //if the new inputs are the same as the original inputs nothing happens
+        input.question === question &&
+        input.choices[0] === choices[0] &&
+        input.choices[1] === choices[1] &&
+        input.choices[2] === choices[2] &&
+        input.choices[3] === choices[3] &&
+        input.correct_answer === correct_answer
+      ) {
+        return;
+      } else if (
+        //checks if the input answer matches at least one of the choices
+        correctAnswerInput === inputs.choiceOneInput ||
+        correctAnswerInput === inputs.choiceTwoInput ||
+        correctAnswerInput === inputs.choiceThreeInput ||
+        correctAnswerInput === inputs.choiceFourInput
+      ) {
+        patchQuiz(quiz_id, input);
+      } else {
+        console.log("correct answer must match one of the choices");
+        return;
+      }
     } else {
-      console.log("correct answer must match one of the choices");
       return;
     }
   }
@@ -71,88 +97,91 @@ export default function EditQuiz() {
   return (
     <div>
       <form onSubmit={handleEditQuizSubmit}>
-        <label htmlFor="currentQuestion">Question: </label>
+        <label htmlFor="questionInput">Question: </label>
         <textarea
-          id="currentQuestion"
-          name="currentQuestion"
-          onFocus={() => handleFocus("currentQuestion")}
+          id="questionInput"
+          name="questionInput"
+          onFocus={() => handleFocus("questionInput")}
           onBlur={handleBlur}
           style={{
             backgroundColor:
-              focusedTextarea === "currentQuestion" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
+              focusedTextarea === "questionInput" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
           }}
-          value={inputQuestion}
-          onChange={(e) => setInputQuestion(e.target.value)}
+          value={questionInput}
+          onChange={(e) => setQuestionInput(e.target.value)}
+          required
         />
 
-        <label htmlFor="currentChoices">Choices: </label>
+        <label htmlFor="choices">Choices: </label>
         <textarea
-          id="choiceOne"
-          name="choiceOne"
-          onFocus={() => handleFocus("choiceOne")}
+          id="choiceOneInput"
+          name="choiceOneInput"
+          onFocus={() => handleFocus("choiceOneInput")}
           onBlur={handleBlur}
           style={{
             backgroundColor:
-              focusedTextarea === "choiceOne" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
+              focusedTextarea === "choiceOneInput" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
           }}
-          value={inputChoiceOne}
-          onChange={(e) => setInputChoiceOne(e.target.value)}
-        />
-
-        <textarea
-          id="choiceTwo"
-          name="choiceTwo"
-          onFocus={() => handleFocus("choiceTwo")}
-          onBlur={handleBlur}
-          style={{
-            backgroundColor:
-              focusedTextarea === "choiceTwo" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
-          }}
-          value={inputChoiceTwo}
-          onChange={(e) => setInputChoiceTwo(e.target.value)}
+          value={inputs.choiceOneInput}
+          onChange={handleChange}
         />
 
         <textarea
-          id="choiceThree"
-          name="choiceThree"
-          onFocus={() => handleFocus("choiceThree")}
+          id="choiceTwoInput"
+          name="choiceTwoInput"
+          onFocus={() => handleFocus("choiceTwoInput")}
           onBlur={handleBlur}
           style={{
             backgroundColor:
-              focusedTextarea === "choiceThree" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
+              focusedTextarea === "choiceTwoInput" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
           }}
-          value={inputChoiceThree}
-          onChange={(e) => setInputChoiceThree(e.target.value)}
+          value={inputs.choiceTwoInput}
+          onChange={handleChange}
         />
 
         <textarea
-          id="choiceFour"
-          name="choiceFour"
-          onFocus={() => handleFocus("choiceFour")}
+          id="choiceThreeInput"
+          name="choiceThreeInput"
+          onFocus={() => handleFocus("choiceThreeInput")}
           onBlur={handleBlur}
           style={{
             backgroundColor:
-              focusedTextarea === "choiceFour" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
+              focusedTextarea === "choiceThreeInput" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
           }}
-          value={inputChoiceFour}
-          onChange={(e) => setInputChoiceFour(e.target.value)}
+          value={inputs.choiceThreeInput}
+          onChange={handleChange}
         />
 
-        <label htmlFor="currentAnswer">Answer: </label>
         <textarea
-          id="currentAnswer"
-          name="currentAnswer"
-          onFocus={() => handleFocus("currentAnswer")}
+          id="choiceFourInput"
+          name="choiceFourInput"
+          onFocus={() => handleFocus("choiceFourInput")}
           onBlur={handleBlur}
           style={{
             backgroundColor:
-              focusedTextarea === "currentAnswer" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
+              focusedTextarea === "choiceFourInput" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
           }}
-          value={inputAnswer}
-          onChange={(e) => setInputAnswer(e.target.value)}
+          value={inputs.choiceFourInput}
+          onChange={handleChange}
+        />
+
+        <label htmlFor="correctAnswerInput">Answer: </label>
+        <textarea
+          id="correctAnswerInput"
+          name="correctAnswerInput"
+          onFocus={() => handleFocus("correctAnswerInput")}
+          onBlur={handleBlur}
+          style={{
+            backgroundColor:
+              focusedTextarea === "correctAnswerInput" ? "white" : "#f0f0f0", //add more styling especially border radius, border, box-shadow etc
+          }}
+          value={correctAnswerInput}
+          onChange={(e) => setCorrectAnswerInput(e.target.value)}
+          required
         />
 
         <button type="submit">Save</button>
+        {submitBtnClicked && !isUnique() && <p>All inputs must be unique.</p>}
         <div>
           <button type="button" onClick={handleReturn}>
             Return
