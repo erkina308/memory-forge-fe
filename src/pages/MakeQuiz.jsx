@@ -62,6 +62,7 @@ export default function MakeQuiz({ quizzes, setQuizzes }) {
         correctAnswerInput === inputs.choiceThreeInput ||
         correctAnswerInput === inputs.choiceFourInput
       ) {
+        setSubmitBtnClicked(false);
         resetInputs();
         setQuestionInput("");
         setCorrectAnswerInput("");

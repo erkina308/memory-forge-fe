@@ -18,14 +18,16 @@
 /* TEST */
 
 .quiz-card-container {
-  height: 500px;
-  width: 800px;
+  height: auto;
+  width: auto;
   margin: 2rem;
 }
 
 .quiz-card {
+  padding: 1rem;
   height: 100%;
   width: 100%;
+  border: 2px solid yellow;
 
   display: flex;
   flex-direction: column;
@@ -33,7 +35,7 @@
   align-items: center;
 
   border-radius: 8px;
-  border: 5px solid white;
+  /* border: 5px solid white; */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
   background: #0077b5;
 
@@ -41,11 +43,11 @@
 }
 
 .quiz-card-question,
-.quiz-card-answer,
+.quiz-card-answer-title,
 .quiz-card-choices {
   height: 100%;
   width: 100%;
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,11 +58,26 @@
   background: #0077b5;
 }
 
+.quiz-card-answer-title,
+.quiz-card-question,
+.quiz-card-choices {
+  font-size: 1rem;
+}
+
 .quiz-card-choice-container {
+  /* border: 2px solid palevioletred; */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 1rem;
+  margin: 3rem auto;
+  /* padding-top: 1rem; */
+}
+
+.quiz-card-choices {
+  /* border: 2px solid black; */
+  position: relative;
+  margin-bottom: 2rem;
 }
 
 .quiz-card-list-container {
@@ -68,65 +85,100 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 60px 60px;
 
-  padding-top: 2rem;
-  margin: 1.5rem;
   gap: 10px;
   background: #0077b5;
+  border: 2px solid black;
 }
 
 .quiz-card-list {
-  /* position: relative; */
-  border: 2px solid #69a3d0;
+  border: 2px solid darkorange;
+  /* border: 2px solid #69a3d0; */
   border-radius: 8px;
 
   display: flex;
   justify-content: center;
   align-items: center;
-
-  padding: 1.75rem;
-  font-weight: 600;
-}
-
-.quiz-card-list textarea {
-  width: 100%; /* Fill the entire width of the parent container */
-  height: 100%; /* Fill the entire height of the parent container */
-  border: none; /* Remove border from the textarea */
-  box-sizing: border-box; /* Include padding and border in the textarea's total width and height */
+  overflow: hidden;
+  font-size: 0.9rem;
+  /* clamp(0.5rem, 1.25rem, 1.75rem); */
 }
 
 .quiz-card-list li {
+  /* border: 2px solid yellow; */
   list-style: none;
   color: white;
-  flex: 1;
+  margin: 1.25rem;
 }
 
 .edit-quiz-button {
   background-color: #0077b5;
-  color: #fff;
+  color: white;
   padding: 10px 20px;
+  /* border: 2px solid yellow; */
   border: 2px solid #69a3d0;
   border-radius: 8px;
   cursor: pointer;
+  font-size: 0.9rem;
 }
+
+.quiz-card-question,
+.quiz-card-answer,
+.quiz-card-choices,
+.quiz-card-list {
+  cursor: default;
+}
+/* INTERACTIVE CARD */
 
 .interactive-quiz-container {
-  padding: 2.5rem 1.75rem;
+  /* border: 2px solid aqua; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.editing-text-area {
+.quiz-card-question.interactive-question {
+  font-size: 1.75rem;
+  /* border: 2px solid black; */
+}
+
+.quiz-card-list-container.interactive-list-container {
+  /* border: 2px solid white; */
+  margin: 2.5rem;
+}
+
+.quiz-card-list.interactive-card-list {
+  /* border: 2px solid brown; */
+}
+
+.quiz-card-list.interactive-card-list li {
+  /* border: 2px solid brown; */
+  font-size: 1.3rem;
+}
+
+/* BUTTON CONTAINER  */
+
+.edit-delete-quiz-btn-container {
+  /* border: 2px solid black; */
+  flex-direction: row;
+  align-self: flex-end;
+  margin-right: 1.2rem;
+  margin-top: 1.2rem;
+}
+/* .editing-text-area {
   flex: 1;
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   resize: vertical;
-  font-family: Arial, sans-serif; /* Use a readable font */
+  font-family: Arial, sans-serif; 
   font-size: 14px;
-}
+} */
 
-.editing-text-area:focus {
+/* .editing-text-area:focus {
   flex: 1;
-  border-color: #0077b5; /* Change border color on focus */
-  outline: none; /* Remove the default outline */
-  box-shadow: 0 0 5px rgba(0, 119, 181, 0.5); /* Add a subtle box shadow */
-}
+  border-color: #0077b5; 
+  outline: none; 
+  box-shadow: 0 0 5px rgba(0, 119, 181, 0.5); 
+} */

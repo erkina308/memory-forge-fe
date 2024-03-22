@@ -10,7 +10,6 @@ import Homepage from "./pages/Homepage";
 import Quizzes from "./pages/Quizzes";
 import ViewQuiz from "./pages/ViewQuiz";
 import EditQuiz from "./pages/EditQuiz";
-import TestPage from "./pages/TestPage";
 
 function App() {
   return (
@@ -79,14 +78,6 @@ function App() {
           element={
             <PrivateRoute>
               <EditQuiz />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/quizzes/test"
-          element={
-            <PrivateRoute>
-              <TestPage />
             </PrivateRoute>
           }
         />

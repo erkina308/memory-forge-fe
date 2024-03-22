@@ -11,12 +11,17 @@ export default function InteractiveQuizCard({ quiz, quizAnswer }) {
       <div className="quiz-card">
         <div className="interactive-quiz-container">
           <div>
-            <h1 className="quiz-card-question">{quiz.question}</h1>
+            <h1 className="quiz-card-question interactive-question">
+              {quiz.question}
+            </h1>
           </div>
-          <div className="quiz-card-list-container">
+          <div className="quiz-card-list-container interactive-list-container">
             {quiz.choices.map((choice) => {
               return (
-                <div className="quiz-card-list" key={choice}>
+                <div
+                  className="quiz-card-list interactive-card-list"
+                  key={choice}
+                >
                   <ul>
                     <div onClick={() => handleChoice(choice)}>
                       <li>{choice}</li>
