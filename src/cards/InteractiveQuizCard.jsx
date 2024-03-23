@@ -10,11 +10,9 @@ export default function InteractiveQuizCard({ quiz, quizAnswer }) {
     <div key={quiz.quiz_id} className="quiz-card-container">
       <div className="quiz-card">
         <div className="interactive-quiz-container">
-          <div>
-            <h1 className="quiz-card-question interactive-question">
-              {quiz.question}
-            </h1>
-          </div>
+          <h1 className="quiz-card-question interactive-question">
+            {quiz.question}
+          </h1>
           <div className="quiz-card-list-container interactive-list-container">
             {quiz.choices.map((choice) => {
               return (

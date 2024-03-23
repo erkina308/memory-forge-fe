@@ -1,10 +1,23 @@
-export default function EditQuizCard({ quiz }) {
+import { deleteQuiz } from "../../utils/quizzesApi";
+import { useNavigate } from "react-router-dom";
+
+export default function EditQuizCard({ quiz, quizzes, setQuizzes }) {
+  const navigate = useNavigate();
+
+  function handleQuizDelete(e, id) {
+    e.preventDefault();
+
+    const newQuizList = quizzes.filter((quiz) => {
+      return quiz.quiz_id !== id;
+    });
+    setQuizzes(newQuizList);
+    deleteQuiz(id);
+  }
+
   return (
     <div className="quiz-card-container">
       <div className="quiz-card">
-        <div>
-          <h1 className="quiz-card-question">Question: {quiz.question}</h1>
-        </div>
+        <h1 className="quiz-card-question">Question: {quiz.question}</h1>
         <div className="quiz-card-choice-container">
           <div>
             <h1 className="quiz-card-choices">Choices: </h1>
@@ -24,6 +37,23 @@ export default function EditQuizCard({ quiz }) {
         <div>
           <h2 className="quiz-card-answer-title">Correct answer:</h2>
           <p className="quiz-card-answer">{quiz.correct_answer}</p>
+        </div>
+        <div className="edit-delete-quiz-btn-container">
+          <button
+            className="edit-quiz-button"
+            onClick={() => {
+              navigate("/quizzes/edit-quiz", { state: { quiz } });
+            }}
+          >
+            Edit Quiz
+          </button>
+          <button
+            className="edit-quiz-button"
+            onClick={(e) => handleQuizDelete(e, quiz.quiz_id)}
+          >
+            Delete Quiz
+            {/* This needs to have a confirm popup, to confirm whether the user really wants to delete the quiz */}
+          </button>
         </div>
       </div>
     </div>

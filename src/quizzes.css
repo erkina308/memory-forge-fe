@@ -19,7 +19,7 @@
 
 .quiz-card-container {
   height: auto;
-  width: auto;
+  max-width: 1000px;
   margin: 2rem;
 }
 
@@ -27,7 +27,7 @@
   padding: 1rem;
   height: 100%;
   width: 100%;
-  border: 2px solid yellow;
+  /* border: 2px solid yellow; */
 
   display: flex;
   flex-direction: column;
@@ -35,7 +35,7 @@
   align-items: center;
 
   border-radius: 8px;
-  /* border: 5px solid white; */
+  border: 5px solid white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
   background: #0077b5;
 
@@ -58,10 +58,20 @@
   background: #0077b5;
 }
 
+.quiz-card-question {
+  margin: 0.9rem;
+}
+
 .quiz-card-answer-title,
 .quiz-card-question,
 .quiz-card-choices {
   font-size: 1rem;
+}
+
+.quiz-card-answer {
+  color: white;
+  margin: 0.9rem;
+  text-align: center;
 }
 
 .quiz-card-choice-container {
@@ -83,19 +93,20 @@
 .quiz-card-list-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 60px 60px;
+  grid-template-rows: 1fr, 1fr;
 
   gap: 10px;
   background: #0077b5;
-  border: 2px solid black;
+  /* border: 2px solid black; */
 }
 
 .quiz-card-list {
-  border: 2px solid darkorange;
-  /* border: 2px solid #69a3d0; */
+  /* border: 2px solid darkorange; */
+  border: 2px solid #69a3d0;
   border-radius: 8px;
-
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   overflow: hidden;
@@ -139,6 +150,7 @@
 
 .quiz-card-question.interactive-question {
   font-size: 1.75rem;
+  margin: 0.9rem;
   /* border: 2px solid black; */
 }
 
@@ -147,9 +159,9 @@
   margin: 2.5rem;
 }
 
-.quiz-card-list.interactive-card-list {
-  /* border: 2px solid brown; */
-}
+/* .quiz-card-list.interactive-card-list {
+  border: 2px solid brown;
+} */
 
 .quiz-card-list.interactive-card-list li {
   /* border: 2px solid brown; */
@@ -160,11 +172,12 @@
 
 .edit-delete-quiz-btn-container {
   /* border: 2px solid black; */
+  display: flex;
   flex-direction: row;
-  align-self: flex-end;
-  margin-right: 1.2rem;
-  margin-top: 1.2rem;
+  justify-content: center;
+  margin: 0.9rem;
 }
+
 /* .editing-text-area {
   flex: 1;
   width: 100%;
