@@ -19,7 +19,7 @@
 
 .quiz-card-container {
   height: auto;
-  max-width: 1000px;
+  max-width: 900px;
   margin: 2rem;
 }
 
@@ -95,7 +95,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr, 1fr;
 
-  gap: 10px;
+  gap: 1.5rem;
   background: #0077b5;
   /* border: 2px solid black; */
 }
@@ -104,11 +104,13 @@
   /* border: 2px solid darkorange; */
   border: 2px solid #69a3d0;
   border-radius: 8px;
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+
   overflow: hidden;
   font-size: 0.9rem;
   /* clamp(0.5rem, 1.25rem, 1.75rem); */
@@ -159,9 +161,27 @@
   margin: 2.5rem;
 }
 
-/* .quiz-card-list.interactive-card-list {
-  border: 2px solid brown;
-} */
+.quiz-card-list.interactive-card-list {
+  cursor: pointer;
+}
+
+.interactive-quiz-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.9rem;
+  margin: 1.5rem;
+}
+
+.quiz-card-list.interactive-card-list.selected-correct-choice {
+  background-color: green;
+  border: 2px solid lightgreen;
+}
+
+.quiz-card-list.interactive-card-list.selected-incorrect-choice {
+  background-color: darkred;
+  border: 2px solid darkorange;
+}
 
 .quiz-card-list.interactive-card-list li {
   /* border: 2px solid brown; */

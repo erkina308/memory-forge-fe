@@ -17,7 +17,8 @@ export default function EditQuizCard({ quiz, quizzes, setQuizzes }) {
   return (
     <div className="quiz-card-container">
       <div className="quiz-card">
-        <h1 className="quiz-card-question">Question: {quiz.question}</h1>
+        <h1 className="quiz-card-question">Question: </h1>
+        <p className="quiz-card-answer">{quiz.question}</p>
         <div className="quiz-card-choice-container">
           <div>
             <h1 className="quiz-card-choices">Choices: </h1>

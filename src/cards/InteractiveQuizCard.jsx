@@ -1,9 +1,15 @@
+import { useState } from "react";
+
 export default function InteractiveQuizCard({ quiz, quizAnswer }) {
+  const [correctChoiceClicked, setCorrectChoiceClicked] = useState(false);
+  const [selectedChoice, setSelectedChoice] = useState(0);
+
   function handleChoice(choice) {
-    if (choice === quizAnswer) {
-      console.log("well done");
+    setSelectedChoice(choice);
+    if (selectedChoice === quizAnswer) {
+      setCorrectChoiceClicked(true);
     } else {
-      console.log("wrong answer");
+      setCorrectChoiceClicked(false);
     }
   }
   return (
@@ -13,17 +19,20 @@ export default function InteractiveQuizCard({ quiz, quizAnswer }) {
           <h1 className="quiz-card-question interactive-question">
             {quiz.question}
           </h1>
-          <div className="quiz-card-list-container interactive-list-container">
-            {quiz.choices.map((choice) => {
+          <div className="interactive-quiz-card-grid">
+            {quiz.choices.map((choice, index) => {
               return (
                 <div
-                  className="quiz-card-list interactive-card-list"
-                  key={choice}
+                  className={`quiz-card-list interactive-card-list ${
+                    correctChoiceClicked
+                      ? "selected-correct-choice"
+                      : "selected-incorrect-choice"
+                  }`}
+                  key={index}
+                  onClick={() => handleChoice(choice)}
                 >
                   <ul>
-                    <div onClick={() => handleChoice(choice)}>
-                      <li>{choice}</li>
-                    </div>
+                    <li>{choice}</li>
                   </ul>
                 </div>
               );
