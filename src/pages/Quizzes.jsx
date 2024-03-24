@@ -19,7 +19,7 @@ export default function Quizzes() {
 
   return (
     <section>
-      <ul>
+      <ul className="quizzes-main-page-navigation">
         <li
           onClick={() => {
             navigate("/quizzes/quiz", { state: { quizzes } });
@@ -32,20 +32,7 @@ export default function Quizzes() {
         </li>
       </ul>
       <div>{/* <Link to={"/quizzes/make-a-quiz"}>Make a Quiz</Link> */}</div>
-      <div>
-        {/* {quizzes.map((quiz) => {
-          return (
-            <div key={quiz.quiz_id}>
-              <InteractiveQuizCard
-                quiz={quiz}
-                quizAnswer={quiz.correct_answer}
-              />
-            </div>
-          );
-        })} */}
-        <InteractiveQuizCard quizzes={quizzes} />
-      </div>
-      {/* this quiz.map should eventually leave this page */}
+      {/* Should these into an interactive card in the middle of the page, maybe use 100vh? */}
     </section>
   );
 }
