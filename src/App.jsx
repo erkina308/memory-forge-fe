@@ -10,6 +10,7 @@ import Homepage from "./pages/Homepage";
 import Quizzes from "./pages/Quizzes";
 import ViewQuiz from "./pages/ViewQuiz";
 import EditQuiz from "./pages/EditQuiz";
+import Quiz from "./pages/Quiz";
 
 function App() {
   return (
@@ -57,14 +58,14 @@ function App() {
             </PrivateRoute>
           }
         />
-        {/* <Route
+        <Route
           path="/quizzes/quiz"
           element={
             <PrivateRoute>
               <Quiz />
             </PrivateRoute>
           }
-        /> */}
+        />
         <Route
           path="/quizzes/view-quizzes"
           element={
