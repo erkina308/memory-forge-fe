@@ -15,7 +15,7 @@ export default function Nav() {
           <Link to={"/quizzes"}>Quizzes</Link>
         </li>
         <li>
-          <Link to={"tasks"}>Tasks</Link>
+          <Link to={"/tasks"}>Tasks</Link>
         </li>
       </ul>
     </StyledNav>

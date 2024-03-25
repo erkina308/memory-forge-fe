@@ -11,6 +11,7 @@ import Quizzes from "./pages/Quizzes";
 import ViewQuiz from "./pages/ViewQuiz";
 import EditQuiz from "./pages/EditQuiz";
 import Quiz from "./pages/Quiz";
+import StudyPlans from "./pages/StudyPlans";
 
 function App() {
   return (
@@ -79,6 +80,17 @@ function App() {
           element={
             <PrivateRoute>
               <EditQuiz />
+            </PrivateRoute>
+          }
+        />
+
+        {/* Study Plans */}
+
+        <Route
+          path="/tasks"
+          element={
+            <PrivateRoute>
+              <StudyPlans />
             </PrivateRoute>
           }
         />

@@ -270,3 +270,7 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+.edit-quiz-screen {
+  margin: auto;
+}

@@ -26,7 +26,7 @@ export default function ViewQuiz() {
       {quizzes.map((quiz) => {
         return (
           <div key={quiz.quiz_id}>
-            <div>
+            <div className="edit-quiz-screen">
               <EditQuizCard
                 quiz={quiz}
                 quizzes={quizzes}
