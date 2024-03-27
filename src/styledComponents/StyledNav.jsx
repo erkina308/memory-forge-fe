@@ -22,9 +22,7 @@ const StyledNav = styled.nav`
     text-decoration: none;
     color: black;
     cursor: pointer;
-    font-size: 19px;
     padding: 1.25rem;
-    font-weight: 600;
     &:visited {
       color: black;
     }

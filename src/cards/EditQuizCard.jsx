@@ -26,8 +26,8 @@ export default function EditQuizCard({ quiz, quizzes, setQuizzes }) {
           <div className="quiz-card-list-container">
             {quiz.choices.map((choice) => {
               return (
-                <div key={choice} className="quiz-card-list">
-                  <ul>
+                <div key={choice}>
+                  <ul className="quiz-card-list">
                     <li>{choice}</li>
                   </ul>
                 </div>

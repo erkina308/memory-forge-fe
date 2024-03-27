@@ -1,7 +1,7 @@
 #dashboard {
   height: 100vh;
 
-  display: grid;
+  /* display: grid; */
   grid-template-columns: 300px 1fr;
   grid-template-rows: 60px 1fr;
   grid-template-areas:
@@ -13,18 +13,9 @@
   grid-area: header;
 }
 
-.dashboard-sidebar {
-  background-color: lightgrey;
-  grid-area: side;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .dashboard-main-body {
   background-color: white;
-  padding: 25px;
+  padding-top: 7rem;
   grid-area: main;
 
   display: grid;
@@ -71,7 +62,7 @@
   top: 0;
   padding-top: 1.75rem;
 }
-
+/* 
 @media (max-width: 950px) {
   .dashboard-main-body {
     grid-template-columns: 1fr;
@@ -82,4 +73,4 @@
   .dashboard-card {
     grid-area: initial !important;
   }
-}
+} */
