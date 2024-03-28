@@ -4,8 +4,12 @@ export default function Nav() {
   return (
     <div className="navbar-container">
       <div className="memory-forge-logo">
-        <h1 className="memory">Memory</h1>
-        <h1 className="forge">Forge</h1>
+        <h1 className="memory">
+          <Link to={"/dashboard"}>Memory</Link>
+        </h1>
+        <h1 className="forge">
+          <Link to={"/dashboard"}>Forge</Link>
+        </h1>
       </div>
       <ul>
         <li>

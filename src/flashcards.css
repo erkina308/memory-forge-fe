@@ -95,6 +95,14 @@
   background: #0077b5;
 }
 
+.card-front h1,
+.card-back h1 {
+  font-size: 1.45rem;
+  font-weight: 400;
+
+  padding: 0 1rem;
+}
+
 .card-back {
   background: #0077b5;
   transform: rotateY(180deg);
@@ -135,6 +143,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
+  margin-top: 3rem;
   padding: 1.75rem;
 }
 
