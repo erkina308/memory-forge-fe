@@ -1,66 +1,94 @@
-#dashboard {
-  height: 100vh;
-
-  /* display: grid; */
-  grid-template-columns: 300px 1fr;
-  grid-template-rows: 60px 1fr;
-  grid-template-areas:
-    "side header"
-    "side main";
+header {
+  padding: 10rem 1.5rem 8rem;
+  margin: 1.5rem;
+  width: auto;
 }
 
-.dashboard-header {
-  grid-area: header;
+header h1 {
+  font-weight: 500;
+  text-align: center;
 }
 
-.dashboard-main-body {
-  background-color: white;
-  padding-top: 7rem;
-  grid-area: main;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-areas:
-    "c1 c2 c3"
-    "c4 c4 c5"
-    "c4 c4 c6";
-  gap: 20px;
+.study-plan-box-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
 }
 
-.dashboard-card {
-  background-color: seagreen;
+.study-plan-box {
+  height: 30vh;
+  width: 1000px;
+  border: 2px solid black;
   border-radius: 8px;
 }
 
-.dashboard-card:nth-child(1) {
-  grid-area: c1;
+/* DASHBOARD BODY */
+
+#dashboard {
+  height: 100vh;
 }
 
-.dashboard-card:nth-child(2) {
-  grid-area: c2;
+.dashboard-main-body {
+  margin: 10rem 5rem 2rem;
+  width: auto;
+  padding-bottom: 10rem;
 }
 
-.dashboard-card:nth-child(3) {
-  grid-area: c3;
+.dashboard-main-body h2 {
+  font-weight: 400;
+}
+.dashboard-main-body p {
+  color: #444444;
 }
 
-.dashboard-card:nth-child(4) {
-  grid-area: c4;
+/* FLASHCARD BOX */
+
+.flashcard-info {
+  height: 30rem;
+  display: grid;
+  gap: 5rem;
+  grid-template-areas: "card title";
 }
 
-.dashboard-card:nth-child(5) {
-  grid-area: c5;
+.dashboard-flashcard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.dashboard-card:nth-child(6) {
-  grid-area: c6;
+.dashboard-flashcard {
+  grid-area: card;
 }
 
-.dashboard-title {
-  position: absolute;
-  top: 0;
-  padding-top: 1.75rem;
+.dashboard-flashcard-info {
+  grid-area: title;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashboard-flashcard-info h2 {
+  margin: 0.9rem 1rem;
+}
+
+.dashboard-flashcard-info p {
+  margin: 0.9rem 1rem;
+}
+
+.dashboard-flashcard-button {
+  background-color: #0077b5;
+  color: white;
+
+  padding: 1.2rem;
+  margin: 0.9rem 1rem;
+
+  border-radius: 8px;
+  border: none;
+  font-size: 0.9rem;
+
+  cursor: pointer;
 }
 /* 
 @media (max-width: 950px) {

@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import FlippableCard from "../components/FlippableCard";
 import CreateFlashcard from "./CreateFlashcard";
 import Expandable from "../components/Expandable";
+import Nav from "../components/Nav";
 
 export default function Flashcards() {
   const [flashcards, setFlashcards] = useState([]);
@@ -37,15 +38,7 @@ export default function Flashcards() {
   if (isLoading) return <p>Page Loading...</p>;
   return (
     <section>
-      <header className="navbar">
-        <h1 className="title logo">
-          <Link to={"/dashboard"}>Memory Forge</Link>
-        </h1>
-
-        <button className="logout-button" onClick={() => setNeedLogout(true)}>
-          Log out
-        </button>
-      </header>
+      <Nav />
       <div className="flashcards-links-container">
         <ul>
           <li>

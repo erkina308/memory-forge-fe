@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import FlippableCard from "../components/FlippableCard";
 import { IoCaretBack } from "react-icons/io5";
 import { IoCaretForward } from "react-icons/io5";
+import Nav from "../components/Nav";
 
 export default function FlashcardRevision() {
   const [flashcards, setFlashcards] = useState([]);
@@ -39,18 +40,7 @@ export default function FlashcardRevision() {
   if (isLoading) return <p>Page Loading...</p>;
   return (
     <div>
-      <header className="navbar">
-        <button className="logout-button">
-          <Link to={"/flashcards"}>Back</Link>
-        </button>
-        <h1 className="title logo">
-          <Link to={"/dashboard"}>Memory Forge</Link>
-        </h1>
-        <button className="logout-button" onClick={() => setNeedLogout(true)}>
-          Log out
-        </button>
-      </header>
-
+      <Nav />
       <section id="flashcard-revision">
         <FlippableCard card={flashcards[currentCardIndex]} />
         <div className="buttons_container">
