@@ -5,10 +5,15 @@ import Nav from "../components/Nav";
 import DashboardFlashcard from "../components/DashboardFlashcard";
 import DashboardQuiz from "../components/DashboardQuiz";
 
+// return (
+//   <topicContext.Provider value={{ topics }}>{children}</topicContext.Provider>
+// );
+
 export default function Dashboard() {
   const [answers, setAnswers] = useState({
     answers: ["answer one", "answer two", "answer three", "answer four"],
   });
+
   return (
     <section id="dashboard">
       <Nav />

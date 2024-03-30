@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { TopicContext } from "../contexts/TopicContext";
 import { fetchFlashcards } from "../../utils/flashcardApi";
 import { Link, useNavigate } from "react-router-dom";
 import FlippableCard from "../components/FlippableCard";
@@ -10,6 +11,7 @@ export default function Flashcards() {
   const [flashcards, setFlashcards] = useState([]);
   const [needLogout, setNeedLogout] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const { topics } = useContext(TopicContext);
   const navigate = useNavigate();
 
   //api call for flashcards

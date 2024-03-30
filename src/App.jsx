@@ -1,5 +1,7 @@
-import { Fragment } from "react";
+import { Fragment, useState, useEffect } from "react";
+import { TopicContext } from "./contexts/TopicContext";
 import { Routes, Route } from "react-router-dom";
+import { fetchAllTopics } from "../utils/topicsApi";
 import PrivateRoute from "../authentication/PrivateRoute";
 // import Register from "./pages/authPages/Register";
 import Login from "./pages/authPages/Login";
@@ -14,87 +16,101 @@ import Quiz from "./pages/Quiz";
 import StudyPlans from "./pages/StudyPlans";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+  const [topics, setTopics] = useState([]);
+
+  useEffect(() => {
+    fetchAllTopics().then((data) => {
+      setTopics(data);
+      setIsLoading(false);
+    });
+  }, []);
+
+  if (isLoading) <p>Page Loading...</p>;
   return (
     <Fragment>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        {/* <Route path="/register" element={<Register />} /> */}
-        <Route path="/login" element={<Login />} />
-        {/* Redirect to login if user tries to access private routes without authentication */}
-        <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
+      <TopicContext.Provider value={{ topics }}>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          {/* <Route path="/register" element={<Register />} /> */}
+          <Route path="/login" element={<Login />} />
+          {/* Redirect to login if user tries to access private routes without authentication */}
 
-        {/* Flashcard routes */}
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
 
-        <Route
-          path="/flashcards"
-          element={
-            <PrivateRoute>
-              <Flashcards />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/revision-flashcards"
-          element={
-            <PrivateRoute>
-              <FlashcardRevision />
-            </PrivateRoute>
-          }
-        />
+          {/* Flashcard routes */}
 
-        {/* Quiz routes */}
+          <Route
+            path="/flashcards"
+            element={
+              <PrivateRoute>
+                <Flashcards />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/revision-flashcards"
+            element={
+              <PrivateRoute>
+                <FlashcardRevision />
+              </PrivateRoute>
+            }
+          />
 
-        <Route
-          path="/quizzes"
-          element={
-            <PrivateRoute>
-              <Quizzes />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/quizzes/quiz"
-          element={
-            <PrivateRoute>
-              <Quiz />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/quizzes/view-quizzes"
-          element={
-            <PrivateRoute>
-              <ViewQuiz />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path="/quizzes/edit-quiz"
-          element={
-            <PrivateRoute>
-              <EditQuiz />
-            </PrivateRoute>
-          }
-        />
+          {/* Quiz routes */}
 
-        {/* Study Plans */}
+          <Route
+            path="/quizzes"
+            element={
+              <PrivateRoute>
+                <Quizzes />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/quizzes/quiz"
+            element={
+              <PrivateRoute>
+                <Quiz />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/quizzes/view-quizzes"
+            element={
+              <PrivateRoute>
+                <ViewQuiz />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/quizzes/edit-quiz"
+            element={
+              <PrivateRoute>
+                <EditQuiz />
+              </PrivateRoute>
+            }
+          />
 
-        <Route
-          path="/tasks"
-          element={
-            <PrivateRoute>
-              <StudyPlans />
-            </PrivateRoute>
-          }
-        />
-      </Routes>
+          {/* Study Plans */}
+
+          <Route
+            path="/tasks"
+            element={
+              <PrivateRoute>
+                <StudyPlans />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </TopicContext.Provider>
     </Fragment>
   );
 }

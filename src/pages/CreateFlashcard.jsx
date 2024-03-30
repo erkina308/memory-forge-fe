@@ -1,15 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { TopicContext } from "../contexts/TopicContext";
 import { postFlashcard } from "../../utils/flashcardApi";
 
 export default function CreateFlashcard({ flashcards, setFlashcards }) {
   const [questionInput, setQuestionInput] = useState("");
   const [answerInput, setAnswerInput] = useState("");
+  const [topicInput, setTopicInput] = useState("");
+  const { topics } = useContext(TopicContext);
   // const [err, setErr] = useState(null);
 
   const flashcard_id = new Date(); //for the new flashcard, as it is being optimistically rendered and requires an id for the key in the flashcards page
   const input = {
     question: questionInput,
     answer: answerInput,
+    topic: topicInput,
   };
 
   function handleFlashcardSubmit(e) {
@@ -40,6 +44,8 @@ export default function CreateFlashcard({ flashcards, setFlashcards }) {
           onChange={(e) => setAnswerInput(e.target.value)}
           required
         />
+        <label htmlFor="newTopic">Topic</label>
+        <input name="newTopic" id="newTopic" value={topicInput} />
         <button type="submit">Make new flashcard</button>
       </form>
     </section>
