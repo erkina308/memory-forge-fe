@@ -7,7 +7,7 @@ export default function CreateFlashcard({ flashcards, setFlashcards }) {
   const [answerInput, setAnswerInput] = useState("");
   const [topicInput, setTopicInput] = useState("");
   const { topics } = useContext(TopicContext);
-  // const [err, setErr] = useState(null);
+  // const [err, setErr] = useState(null)
 
   const flashcard_id = new Date(); //for the new flashcard, as it is being optimistically rendered and requires an id for the key in the flashcards page
   const input = {
@@ -45,7 +45,21 @@ export default function CreateFlashcard({ flashcards, setFlashcards }) {
           required
         />
         <label htmlFor="newTopic">Topic</label>
-        <input name="newTopic" id="newTopic" value={topicInput} />
+        <select
+          id="newTopic"
+          value={topicInput}
+          onChange={(e) => setTopicInput(e.target.value)}
+        >
+          <option value={""}>Select a topic</option>
+          {topics.map((topic) => {
+            return (
+              <option key={topic.topic_id} value={topic.topic_name}>
+                {topic.topic_name}
+              </option>
+            );
+          })}
+        </select>
+        <p>Selected topic: {topicInput}</p>
         <button type="submit">Make new flashcard</button>
       </form>
     </section>

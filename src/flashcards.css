@@ -180,3 +180,54 @@
   list-style: none;
   padding: 2rem;
 }
+
+/* FLASHCARD BY TOPIC CARD */
+
+.flash-by-topic-card-container {
+  /* border: 2px solid black; */
+  margin: 2rem 2rem;
+  width: auto;
+  /* may need to change width and height values */
+  height: auto;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.9);
+}
+
+.topic-card {
+  border: 2px solid rgb(73, 162, 235);
+  border-radius: 1.5rem;
+  margin: 2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  height: 19rem;
+  width: 14rem;
+
+  text-align: center;
+}
+
+.topic-card:hover {
+  border: 2px solid rgb(19, 19, 73);
+  transition: all 400ms ease-out;
+}
+
+.topic-card h1 {
+  font-weight: 500;
+}
+
+.topic-card p {
+  font-weight: 400;
+}
+
+.topic-card h1,
+.topic-card p {
+  margin: 0 1rem;
+}

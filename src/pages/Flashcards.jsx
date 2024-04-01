@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, Fragment } from "react";
 import { TopicContext } from "../contexts/TopicContext";
 import { fetchFlashcards } from "../../utils/flashcardApi";
 import { Link, useNavigate } from "react-router-dom";
@@ -35,9 +35,22 @@ export default function Flashcards() {
       return instance.flashcard_id;
     }
   }
+  //to get the count of flashcards by topic
+  const getFlashcardCountsByTopic = () => {
+    const flashcardCounts = {};
+    flashcards.forEach((flashcard) => {
+      const topic = flashcard.topic;
+      flashcardCounts[topic] = (flashcardCounts[topic] || 0) + 1;
+    });
+    // console.log(flashcardCounts, "<-- flashcard counts?");
+    return flashcardCounts;
+  };
 
   //rendering flashcards if page has loaded
   if (isLoading) return <p>Page Loading...</p>;
+
+  const flashcardCountsByTopic = getFlashcardCountsByTopic(); //function called to get count
+
   return (
     <section>
       <Nav />
@@ -56,6 +69,21 @@ export default function Flashcards() {
           </li>
         </ul>
       </div>
+
+      <div className="flash-by-topic-card-container">
+        {/* onclick should be added to navigate to the selected topics flashcards */}
+        {topics.map((topic) =>
+          flashcardCountsByTopic[topic.topic_name] ? (
+            <div className="topic-card" key={topic.topic_id}>
+              <h1>{topic.topic_name}</h1>
+              <p>Card count: {flashcardCountsByTopic[topic.topic_name]}</p>
+            </div>
+          ) : (
+            <Fragment key={topic.topic_id}></Fragment>
+          )
+        )}
+      </div>
+
       <div className="links-listedcards-container">
         {flashcards.map((card) => {
           return (
@@ -72,3 +100,7 @@ export default function Flashcards() {
     </section>
   );
 }
+// Users should be able to view decks by topics or all flashcards
+// when a user creates a new flashcard, a card(deck) should dynamically be made if the topic doesnt exist, with the number of cards being 1
+//if the card with that topic already exists then it should just increase the count by 1
+//when the user clicks onto the card it navigates them to a page where those flashcards by topic are loaded and should use sort by? in the backend to do this

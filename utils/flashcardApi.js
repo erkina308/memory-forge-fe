@@ -47,6 +47,7 @@ export const postFlashcard = async (input) => {
     const res = await memoryForgeApi.post(`/${user_id}/flashcards`, {
       question: input.question,
       answer: input.answer,
+      topic: input.topic,
     });
     const { flashcard } = res.data;
     return flashcard;
