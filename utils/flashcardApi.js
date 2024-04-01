@@ -3,7 +3,7 @@ import { jwtDecode } from "jwt-decode";
 
 //fetch flashcards from db
 
-export const fetchFlashcards = async () => {
+export const fetchFlashcards = async (topic) => {
   // Retrieve the token from localStorage
   const token = localStorage.getItem("token");
 
@@ -19,7 +19,11 @@ export const fetchFlashcards = async () => {
   const user_id = decodedToken.userId;
 
   try {
-    const res = await memoryForgeApi.get(`/${user_id}/flashcards`);
+    let url = `/${user_id}/flashcards`;
+    if (topic) {
+      url += `?topic=${encodeURIComponent(topic)}`;
+    }
+    const res = await memoryForgeApi.get(url);
     const { flashcards } = res.data;
     return flashcards;
   } catch (err) {

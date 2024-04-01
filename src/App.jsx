@@ -8,6 +8,7 @@ import Login from "./pages/authPages/Login";
 import Dashboard from "./pages/Dashboard";
 import Flashcards from "./pages/Flashcards";
 import FlashcardRevision from "./pages/FlashcardRevision";
+import FlashcardTopicPage from "./pages/FlashcardTopicPage";
 import Homepage from "./pages/Homepage";
 import Quizzes from "./pages/Quizzes";
 import ViewQuiz from "./pages/ViewQuiz";
@@ -60,6 +61,15 @@ function App() {
             element={
               <PrivateRoute>
                 <FlashcardRevision />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/flashcards/topic"
+            element={
+              <PrivateRoute>
+                <FlashcardTopicPage />
               </PrivateRoute>
             }
           />

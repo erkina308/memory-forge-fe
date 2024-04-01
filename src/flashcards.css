@@ -184,7 +184,6 @@
 /* FLASHCARD BY TOPIC CARD */
 
 .flash-by-topic-card-container {
-  /* border: 2px solid black; */
   margin: 2rem 2rem;
   width: auto;
   /* may need to change width and height values */
@@ -212,6 +211,8 @@
   width: 14rem;
 
   text-align: center;
+
+  cursor: pointer;
 }
 
 .topic-card:hover {
@@ -230,4 +231,13 @@
 .topic-card h1,
 .topic-card p {
   margin: 0 1rem;
+}
+
+.topic-page-container {
+  margin-top: 6rem;
+}
+
+.flashcard-deck-title {
+  font-weight: 400;
+  margin-left: 5rem;
 }

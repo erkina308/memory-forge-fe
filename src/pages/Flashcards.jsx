@@ -69,12 +69,17 @@ export default function Flashcards() {
           </li>
         </ul>
       </div>
-
+      <h1 className="flashcard-deck-title">Flashcard Decks</h1>
       <div className="flash-by-topic-card-container">
-        {/* onclick should be added to navigate to the selected topics flashcards */}
         {topics.map((topic) =>
           flashcardCountsByTopic[topic.topic_name] ? (
-            <div className="topic-card" key={topic.topic_id}>
+            <div
+              onClick={() => {
+                navigate(`/flashcards/topic?topic=${topic.topic_name}`);
+              }}
+              className="topic-card"
+              key={topic.topic_id}
+            >
               <h1>{topic.topic_name}</h1>
               <p>Card count: {flashcardCountsByTopic[topic.topic_name]}</p>
             </div>
