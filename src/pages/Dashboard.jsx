@@ -4,10 +4,7 @@ import { useState } from "react";
 import Nav from "../components/Nav";
 import DashboardFlashcard from "../components/DashboardFlashcard";
 import DashboardQuiz from "../components/DashboardQuiz";
-
-// return (
-//   <topicContext.Provider value={{ topics }}>{children}</topicContext.Provider>
-// );
+import DashboardTopicCard from "../components/DashboardTopicCard";
 
 export default function Dashboard() {
   const [answers, setAnswers] = useState({
@@ -47,6 +44,19 @@ export default function Dashboard() {
                 </button>
               </Link>
             </div>
+          </div>
+        </div>
+        <div className="quiz-info topic-info">
+          <div className="dashboard-quiz-container">
+            <DashboardTopicCard />
+          </div>
+          <div className="dashboard-topic-info">
+            <h2>Flashcard by topic decks</h2>
+            <p>
+              Flashcards can even be put into decks, by selecting a topic when
+              making the flashcard, which can be useful for easy navigation to a
+              specific topic
+            </p>
           </div>
         </div>
         <div className="quiz-info">

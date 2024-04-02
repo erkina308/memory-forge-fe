@@ -222,6 +222,7 @@
 
 .topic-card h1 {
   font-weight: 500;
+  padding-bottom: 1rem;
 }
 
 .topic-card p {

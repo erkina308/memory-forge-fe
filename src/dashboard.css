@@ -100,7 +100,7 @@ header h1 {
   margin-top: 6rem;
   display: grid;
   gap: 5rem;
-  grid-template-areas: "title card";
+  grid-template-areas: "card title";
 }
 
 .dashboard-quiz-container {
@@ -169,6 +169,34 @@ header h1 {
   cursor: pointer;
 }
 
+/* TOPIC */
+
+.topic-info {
+  height: 30rem;
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+  display: grid;
+  gap: 5rem;
+  grid-template-areas: "title card";
+}
+
+.dashboard-topic-info {
+  grid-area: title;
+
+  padding: 0 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.dashboard-topic-info h2 {
+  margin: 0.9rem 1rem;
+}
+
+.dashboard-topic-info p {
+  margin: 0.9rem 1rem;
+  flex-wrap: wrap;
+}
 /* 
 @media (max-width: 950px) {
   .dashboard-main-body {
