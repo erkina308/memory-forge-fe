@@ -259,6 +259,9 @@
   box-shadow: 0 0 5px rgba(0, 119, 181, 0.5); 
 } */
 
+.quizzes-main-page-navigation {
+  margin: 5rem;
+}
 .quizzes-main-page-navigation li {
   list-style: none;
   text-decoration: none;

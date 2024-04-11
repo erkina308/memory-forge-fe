@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { fetchStudyPlans } from "../../utils/studyPlansApi";
 import StudyPlans from "../pages/StudyPlans";
 import Nav from "./Nav";
@@ -10,6 +11,7 @@ import "../studyPlan.css";
 export default function TaskManager() {
   const [studyPlans, setStudyPlans] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchStudyPlans().then((data) => {
@@ -23,9 +25,14 @@ export default function TaskManager() {
     <section id="study-plan-page">
       <Nav />
       <div className="study-plan-container">
-        <Expandable text={"Make new study plan"}>
-          <MakeStudyPlan tasks={studyPlans} setTasks={setStudyPlans} />
-        </Expandable>
+        <button
+          onClick={() => {
+            navigate("/tasks/make-new-task");
+          }}
+        >
+          Make a new study plan
+        </button>
+
         {studyPlans.map((task) => {
           return (
             <StudyPlans
@@ -33,6 +40,9 @@ export default function TaskManager() {
               task={task.task}
               startDatetime={task.start_datetime}
               endDatetime={task.end_datetime}
+              taskId={task.study_plan_id}
+              studyPlans={studyPlans}
+              setStudyPlans={setStudyPlans}
             />
           );
         })}

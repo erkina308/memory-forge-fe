@@ -16,6 +16,7 @@ import EditQuiz from "./pages/EditQuiz";
 import Quiz from "./pages/Quiz";
 // import StudyPlans from "./pages/StudyPlans";
 import TaskManager from "./components/TaskManager";
+import NewStudyPlan from "./pages/NewStudyPlan";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -117,6 +118,15 @@ function App() {
             element={
               <PrivateRoute>
                 <TaskManager />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/tasks/make-new-task"
+            element={
+              <PrivateRoute>
+                <NewStudyPlan />
               </PrivateRoute>
             }
           />

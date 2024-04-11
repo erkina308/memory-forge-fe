@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchQuizzes } from "../../utils/quizzesApi";
 import { Link, useNavigate } from "react-router-dom";
+import Nav from "../components/Nav";
 
 export default function Quizzes() {
   const [quizzes, setQuizzes] = useState([]);
@@ -18,6 +19,7 @@ export default function Quizzes() {
 
   return (
     <section>
+      <Nav />
       <ul className="quizzes-main-page-navigation">
         <li
           onClick={() => {

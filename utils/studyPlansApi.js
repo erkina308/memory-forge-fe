@@ -49,3 +49,25 @@ export const postStudyPlan = async (input) => {
     console.error("Error:", err);
   }
 };
+
+//delete study plan in db
+export const deleteStudyPlan = async (study_plan_id) => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    console.error("Token not found, User is not logged in");
+  }
+
+  const decodedToken = jwtDecode(token);
+
+  const user_id = decodedToken.userId;
+
+  try {
+    const res = await memoryForgeApi.delete(
+      `/${user_id}/study-plans/${study_plan_id}`
+    );
+    return res;
+  } catch (err) {
+    console.error("Error: ", err);
+  }
+};

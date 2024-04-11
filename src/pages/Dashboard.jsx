@@ -37,13 +37,13 @@ export default function Dashboard() {
               Make customisable flashcards to support your learning or view and
               edit current flashcards
             </p>
-            <div>
+            {/* <div>
               <Link to={"/flashcards"}>
                 <button className="dashboard-flashcard-button">
                   Make a Flashcard
                 </button>
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="quiz-info topic-info">
@@ -74,11 +74,11 @@ export default function Dashboard() {
               quizzes or normal multiple choice quizzes. Or view and edit
               current quizzes
             </p>
-            <div>
+            {/* <div>
               <Link to={"/quizzes"}>
                 <button className="dashboard-quiz-button">Make a Quiz</button>
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
