@@ -30,29 +30,39 @@ const Login = () => {
 
   return (
     <section id="login">
-      <nav className="navbar">
+      <nav className="nav_bar">
+        <div className="memory-forge-logo">
+          <h1 className="memory">
+            <Link to={"/dashboard"}>Memory</Link>
+          </h1>
+          <h1 className="forge">
+            <Link to={"/dashboard"}>Forge</Link>
+          </h1>
+        </div>
         <div className="nav-container">
-          <Link to={"/register"}>Create Account</Link>
+          <Link to={"/register"}>Sign Up</Link>
         </div>
       </nav>
       <div className="login-container">
-        <h2 className="title">Login</h2>
-        <div className="login-form">
-          <form className="form-for-login" onSubmit={handleLogin}>
-            <input
-              type="text"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <button type="submit">Login</button>
-          </form>
+        <div className="login_card">
+          <h2 className="title">Login</h2>
+          <div className="login-form">
+            <form className="form-for-login" onSubmit={handleLogin}>
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button type="submit">Login</button>
+            </form>
+          </div>
         </div>
       </div>
     </section>

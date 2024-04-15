@@ -277,3 +277,13 @@
 .edit-quiz-screen {
   margin: auto;
 }
+
+@media screen and (max-width: 550px) {
+  .interactive-quiz-list-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .quiz-card-container {
+    width: 230px;
+  }
+}

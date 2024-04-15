@@ -35,7 +35,7 @@ export default function Dashboard() {
             <h2>Flashcards</h2>
             <p>
               Make customisable flashcards to support your learning or view and
-              edit current flashcards
+              edit current flashcards * try clicking the card *
             </p>
             {/* <div>
               <Link to={"/flashcards"}>
@@ -55,7 +55,7 @@ export default function Dashboard() {
             <p>
               Flashcards can even be put into decks, by selecting a topic when
               making the flashcard, which can be useful for easy navigation to a
-              specific topic
+              specific topic * hover over the card *
             </p>
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function Dashboard() {
             <p>
               Make customisable quizzes which can be timed multiple choice
               quizzes or normal multiple choice quizzes. Or view and edit
-              current quizzes
+              current quizzes * select one of the answers *
             </p>
             {/* <div>
               <Link to={"/quizzes"}>
