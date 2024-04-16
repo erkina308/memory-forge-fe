@@ -262,22 +262,75 @@
 .quizzes-main-page-navigation {
   margin: 5rem;
 }
+
 .quizzes-main-page-navigation li {
   list-style: none;
   text-decoration: none;
   cursor: pointer;
+  padding: 1rem;
+  font-size: 1.5rem;
 }
 
 .quizzes-main-page-navigation li:hover {
   list-style: none;
   text-decoration: none;
   cursor: pointer;
+  color: grey;
+}
+
+.quizzes-main-page-navigation a {
+  list-style: none;
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+  font-size: 1.5rem;
+}
+
+.quizzes-main-page-navigation a:hover {
+  list-style: none;
+  text-decoration: none;
+  cursor: pointer;
+  color: grey;
 }
 
 .edit-quiz-screen {
   margin: auto;
 }
 
+.quiz-navigation-card {
+  margin-top: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz-nav-inner-card {
+  border: 2px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 8px;
+  width: 700px;
+}
+
+.view_quiz_page {
+  display: flex;
+  flex-direction: column;
+}
+
+.quiz_expandable_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 3rem;
+  padding: 1.75rem;
+}
+
+.make_quiz_button_container {
+  padding: 1.5rem;
+}
 @media screen and (max-width: 550px) {
   .interactive-quiz-list-container {
     display: flex;

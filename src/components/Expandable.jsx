@@ -8,9 +8,13 @@ export default function Expandable({ text, children }) {
   }
 
   return (
-    <div>
-      <button onClick={toggleOpen}>{text}</button>
-      {isOpen ? children : null}
+    <div className="expandable_button_container">
+      <button className="expandable_button" onClick={toggleOpen}>
+        {text}
+      </button>
+      <div className={`expandable_content ${isOpen ? "open" : "closed"}`}>
+        {children}
+      </div>
     </div>
   );
 }

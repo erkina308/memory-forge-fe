@@ -12,7 +12,6 @@ body {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
-  height: 100vh;
 }
 
 /* LOGIN PAGE */
@@ -132,4 +131,50 @@ body {
 .logout-button:hover,
 .dashboard-logout-button:hover {
   background-color: darkgrey;
+}
+
+textarea {
+  resize: vertical;
+  padding: 0.3rem 1rem;
+  border-color: #a5a5a5;
+  border-radius: 5px;
+  outline: none;
+}
+
+form {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.expandable_button_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.expandable_button {
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.expandable_button:hover {
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.expandable_content {
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+  max-height: 0;
+}
+
+.expandable_content.open {
+  max-height: 1000px;
 }

@@ -20,18 +20,24 @@ export default function Quizzes() {
   return (
     <section>
       <Nav />
-      <ul className="quizzes-main-page-navigation">
-        <li
-          onClick={() => {
-            navigate("/quizzes/quiz", { state: { quizzes } });
-          }}
-        >
-          Start Quiz
-        </li>
-        <li>
-          <Link to={"/quizzes/view-quizzes"}>View Questions and Answers</Link>
-        </li>
-      </ul>
+      <div className="quiz-navigation-card">
+        <div className="quiz-nav-inner-card">
+          <ul className="quizzes-main-page-navigation">
+            <li
+              onClick={() => {
+                navigate("/quizzes/quiz", { state: { quizzes } });
+              }}
+            >
+              Start quiz
+            </li>
+            <li>
+              <Link to={"/quizzes/view-quizzes"}>
+                View and edit questions and answers
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </div>
       <div>{/* <Link to={"/quizzes/make-a-quiz"}>Make a Quiz</Link> */}</div>
       {/* Should these into an interactive card in the middle of the page, maybe use 100vh? */}
     </section>

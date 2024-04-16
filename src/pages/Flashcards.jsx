@@ -6,11 +6,14 @@ import FlippableCard from "../components/FlippableCard";
 import CreateFlashcard from "./CreateFlashcard";
 import Expandable from "../components/Expandable";
 import Nav from "../components/Nav";
+import FlashSearchBar from "../components/FlashSearchBar";
+import FlashSearchResults from "../components/FlashSearchResults";
 
 export default function Flashcards() {
   const [flashcards, setFlashcards] = useState([]);
   const [needLogout, setNeedLogout] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [results, setResults] = useState([]);
   const { topics } = useContext(TopicContext);
   const navigate = useNavigate();
 
@@ -54,53 +57,66 @@ export default function Flashcards() {
   return (
     <section>
       <Nav />
-      <div className="flashcards-links-container">
-        <ul>
-          <li>
-            <Expandable text={"Make new flashcard"}>
-              <CreateFlashcard
-                flashcards={flashcards}
-                setFlashcards={setFlashcards}
-              />
-            </Expandable>
-          </li>
-          <li>
-            <Link to={"/revision-flashcards"}>Revision</Link>
-          </li>
-        </ul>
-      </div>
-      <h1 className="flashcard-deck-title">Flashcard Decks</h1>
-      <div className="flash-by-topic-card-container">
-        {topics.map((topic) =>
-          flashcardCountsByTopic[topic.topic_name] ? (
-            <div
-              onClick={() => {
-                navigate(`/flashcards/topic?topic=${topic.topic_name}`);
-              }}
-              className="topic-card"
-              key={topic.topic_id}
-            >
-              <h1>{topic.topic_name}</h1>
-              <p>Card count: {flashcardCountsByTopic[topic.topic_name]}</p>
-            </div>
-          ) : (
-            <Fragment key={topic.topic_id}></Fragment>
-          )
-        )}
-      </div>
+      <div className="flashcards_page_container">
+        <div className="flashcards-links-container">
+          <ul>
+            <li>
+              <Expandable text={"Make new flashcard"}>
+                <CreateFlashcard
+                  flashcards={flashcards}
+                  setFlashcards={setFlashcards}
+                />
+              </Expandable>
+            </li>
+            <li>
+              <div className="flashcard_search_container">
+                <FlashSearchBar
+                  flashcards={flashcards}
+                  setResults={setResults}
+                />
+                <FlashSearchResults results={results} />
+              </div>
+            </li>
+            <li>
+              <Link to={"/revision-flashcards"}>Revision</Link>
+            </li>
+          </ul>
+        </div>
 
-      <div className="links-listedcards-container">
-        {flashcards.map((card) => {
-          return (
-            <div key={getKey(card)}>
-              <ul className="flashcard-list">
-                <li>
-                  <FlippableCard card={card} />
-                </li>
-              </ul>
-            </div>
-          );
-        })}
+        <h1 className="flashcard-deck-title">Flashcard Decks</h1>
+
+        <div className="flash-by-topic-card-container">
+          {topics.map((topic) =>
+            flashcardCountsByTopic[topic.topic_name] ? (
+              <div
+                onClick={() => {
+                  navigate(`/flashcards/topic?topic=${topic.topic_name}`);
+                }}
+                className="topic-card"
+                key={topic.topic_id}
+              >
+                <h1>{topic.topic_name}</h1>
+                <p>Card count: {flashcardCountsByTopic[topic.topic_name]}</p>
+              </div>
+            ) : (
+              <Fragment key={topic.topic_id}></Fragment>
+            )
+          )}
+        </div>
+
+        <div className="links-listedcards-container">
+          {flashcards.map((card) => {
+            return (
+              <div key={getKey(card)}>
+                <ul className="flashcard-list">
+                  <li>
+                    <FlippableCard card={card} />
+                  </li>
+                </ul>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

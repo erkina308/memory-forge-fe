@@ -59,3 +59,27 @@ export const postFlashcard = async (input) => {
     console.error("Error:", err);
   }
 };
+
+//search flashcards from db
+
+export const searchFlashcard = async (query) => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    console.error("Token not found. User not logged in");
+    return;
+  }
+  const decodedToken = jwtDecode(token);
+  const user_id = decodedToken.userId;
+  console.log(query, "<--within api");
+  try {
+    let url = `/${user_id}/flashcards`;
+    if (query) {
+      url += `/search?query=${encodeURIComponent(query)}`;
+    }
+    const res = await memoryForgeApi.get(url);
+    const { flashcards } = res.data;
+    return flashcards;
+  } catch (err) {
+    console.error("Error:", err);
+  }
+};

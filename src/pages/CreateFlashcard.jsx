@@ -44,7 +44,6 @@ export default function CreateFlashcard({ flashcards, setFlashcards }) {
           onChange={(e) => setAnswerInput(e.target.value)}
           required
         />
-        <label htmlFor="newTopic">Topic</label>
         <select
           id="newTopic"
           value={topicInput}

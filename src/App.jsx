@@ -17,6 +17,7 @@ import Quiz from "./pages/Quiz";
 // import StudyPlans from "./pages/StudyPlans";
 import TaskManager from "./components/TaskManager";
 import NewStudyPlan from "./pages/NewStudyPlan";
+import TestPage from "./pages/TestPage";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -34,6 +35,7 @@ function App() {
     <Fragment>
       <TopicContext.Provider value={{ topics }}>
         <Routes>
+          <Route path="/test" element={<TestPage />} />
           <Route path="/" element={<Homepage />} />
           {/* <Route path="/register" element={<Register />} /> */}
           <Route path="/login" element={<Login />} />
