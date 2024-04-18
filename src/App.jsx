@@ -18,10 +18,61 @@ import Quiz from "./pages/Quiz";
 import TaskManager from "./components/TaskManager";
 import NewStudyPlan from "./pages/NewStudyPlan";
 import TestPage from "./pages/TestPage";
+import SelectedFlash from "./pages/SelectedFlash";
+import axios from "axios";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
   const [topics, setTopics] = useState([]);
+  const [token, setToken] = useState(localStorage.getItem("token"));
+
+  useEffect(() => {
+    if (!token) {
+      console.log("Token not found in local storage");
+      return;
+    }
+
+    const checkTokenExpiration = () => {
+      const decodedToken = parseJwt(token);
+      const currentTime = Math.floor(Date.now() / 1000); // Convert milliseconds to seconds
+
+      // Check if the token is expired or close to expiration (e.g., within 5 minutes)
+      if (decodedToken && decodedToken.exp - currentTime < 300) {
+        refreshToken();
+      }
+    };
+
+    const refreshToken = async () => {
+      try {
+        // Make a request to your backend to refresh the token
+        const response = await axios.post(
+          "http://localhost:3000/auth/refresh-token",
+          null, // No request body
+          { headers: { Authorization: `Bearer ${token}` } } // Include token in headers
+        );
+        const newToken = response.data.token;
+
+        // Update the token in local storage with the key 'token'
+        localStorage.setItem("token", newToken); // Use 'token' as the key
+        setToken(newToken);
+      } catch (error) {
+        console.error("Failed to refresh token:", error);
+        // Handle token refresh failure (e.g., logout user)
+      }
+    };
+
+    const parseJwt = (token) => {
+      try {
+        return JSON.parse(atob(token.split(".")[1]));
+      } catch (e) {
+        return null;
+      }
+    };
+
+    const tokenRefreshInterval = setInterval(checkTokenExpiration, 60000); // Check every minute
+
+    return () => clearInterval(tokenRefreshInterval); // Cleanup on unmount
+  }, [token]);
 
   useEffect(() => {
     fetchAllTopics().then((data) => {
@@ -74,6 +125,15 @@ function App() {
             element={
               <PrivateRoute>
                 <FlashcardTopicPage />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/flashcards/selected-flashcard"
+            element={
+              <PrivateRoute>
+                <SelectedFlash />
               </PrivateRoute>
             }
           />

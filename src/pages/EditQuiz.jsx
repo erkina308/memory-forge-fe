@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { patchQuiz } from "../../utils/quizzesApi";
+import Nav from "../components/Nav";
 
 export default function EditQuiz() {
   const location = useLocation();
@@ -96,7 +97,8 @@ export default function EditQuiz() {
 
   return (
     <div>
-      <form onSubmit={handleEditQuizSubmit}>
+      <Nav />
+      <form onSubmit={handleEditQuizSubmit} className="edit_quiz_form">
         <label htmlFor="questionInput">Question: </label>
         <textarea
           id="questionInput"
@@ -186,7 +188,6 @@ export default function EditQuiz() {
           <button type="button" onClick={handleReturn}>
             Return
           </button>
-          {/* add an onclick to this to navigate back to the quizzes */}
         </div>
       </form>
     </div>

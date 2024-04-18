@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { IoSearchOutline } from "react-icons/io5";
 // import { searchFlashcard } from "../../utils/flashcardApi";
 
 export default function FlashSearchBar({ flashcards, setResults }) {
@@ -31,13 +32,17 @@ export default function FlashSearchBar({ flashcards, setResults }) {
   // };
 
   return (
-    <div>
-      <input
-        type="text"
-        value={query}
-        onChange={(e) => handleChange(e.target.value)}
-        placeholder="Search Flashcards"
-      />
+    <div className="flash_bar">
+      <div className="flash_search_bar_container">
+        <IoSearchOutline style={{ fontSize: "16px" }} />
+        <input
+          className="flash_search_bar"
+          type="text"
+          value={query}
+          onChange={(e) => handleChange(e.target.value)}
+          placeholder="Search Flashcards"
+        />
+      </div>
       {/* <button onClick={handleSearch}>Search</button> */}
       {/* <div>
         {results.length !== 0

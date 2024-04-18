@@ -1,8 +1,18 @@
 import { deleteQuiz } from "../../utils/quizzesApi";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function EditQuizCard({ quiz, quizzes, setQuizzes }) {
+  const [confirmDelete, setConfirmDelete] = useState(false);
   const navigate = useNavigate();
+
+  const confirmDeleteModal = () => {
+    setConfirmDelete(true);
+  };
+
+  const cancelDeleteModal = () => {
+    setConfirmDelete(false);
+  };
 
   function handleQuizDelete(e, id) {
     e.preventDefault();
@@ -12,6 +22,7 @@ export default function EditQuizCard({ quiz, quizzes, setQuizzes }) {
     });
     setQuizzes(newQuizList);
     deleteQuiz(id);
+    setConfirmDelete(false);
   }
 
   return (
@@ -50,11 +61,19 @@ export default function EditQuizCard({ quiz, quizzes, setQuizzes }) {
           </button>
           <button
             className="edit-quiz-button"
-            onClick={(e) => handleQuizDelete(e, quiz.quiz_id)}
+            onClick={(e) => confirmDeleteModal()}
           >
             Delete Quiz
-            {/* This needs to have a confirm popup, to confirm whether the user really wants to delete the quiz */}
           </button>
+          {confirmDelete && (
+            <div className="confirmation-modal">
+              <p>Are you sure you want to delete this question?</p>
+              <button onClick={(e) => handleQuizDelete(e, quiz.quiz_id)}>
+                Yes
+              </button>
+              <button onClick={(e) => cancelDeleteModal()}>Cancel</button>
+            </div>
+          )}
         </div>
       </div>
     </div>

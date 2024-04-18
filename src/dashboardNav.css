@@ -1,7 +1,7 @@
 nav {
   position: fixed;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 
   background-color: white;
   box-sizing: border-box;
@@ -73,6 +73,81 @@ nav li a:hover {
   text-decoration: none;
 }
 
+/* USERNAME BUTTON */
+
+.username_button_container {
+  /* border: 2px solid black; */
+  font-size: 1.2rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+}
+
+.username_button_inner_container {
+  border: 2px solid #d5d7d9;
+  border-radius: 50%;
+  width: 27px;
+  height: 27px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  user-select: none;
+}
+
+.username_button_inner_container:hover {
+  cursor: pointer;
+}
+
+.user_links {
+  display: none;
+  position: absolute;
+  top: 100%;
+  user-select: none;
+}
+
+.user_links.open {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+  background-color: white;
+}
+
+.user_links.open li {
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.user_links.open a {
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0 0.5rem;
+  width: 100%;
+}
+
+.user_links.open a:hover {
+  background-color: #d5d7d9;
+  border-radius: 4px;
+  color: black;
+}
+
+.user_links.open li:first-child {
+  border-bottom: 1px solid #d5d7d9;
+}
+
+.user_btn_arrow:hover {
+  cursor: pointer;
+}
+
+.user_btn_arrow.open {
+  transform: rotate(180deg);
+}
+
 /* BURGER */
 
 #burger_nav {
@@ -110,6 +185,14 @@ nav li a:hover {
   max-height: 0;
   overflow: hidden;
   transition: all 0.3 ease-in-out;
+}
+
+.menu_links li:nth-child(4) {
+  border-bottom: 1px solid #d5d7d9;
+}
+
+.menu_links li {
+  cursor: pointer;
 }
 
 .menu_links a {
@@ -157,6 +240,10 @@ nav li a:hover {
 
 @media screen and (max-width: 1200px) {
   #desktop_nav {
+    display: none;
+  }
+
+  .username_button_container {
     display: none;
   }
 

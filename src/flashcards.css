@@ -244,15 +244,76 @@
 }
 
 /* SEARCH AND RESULTS */
+.flash_search_bar_container {
+  border: 1px solid #d5d7d9;
+  border-radius: 8px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 0.2rem;
+}
+
+.flash_search_bar {
+  border: none;
+  padding: 0.5rem;
+  outline: none;
+  font-size: 15px;
+  width: 100%;
+}
 
 .flashcard_search_container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 }
+
 .flashcard_search_results {
-  border: 2px solid black;
+  position: absolute;
+  margin-top: 0.2rem;
+  top: 100%;
+  left: 0%;
+  z-index: 1000;
+  border: 1px solid #d5d7d9;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.flashcard_search_results.empty {
+  display: none;
+}
+
+.search_results_ul {
+  max-width: 380px;
+  min-width: 380px;
+}
+
+.search_results_ul li {
+  font-size: 15px;
+}
+
+.search_results_ul li:hover {
+  cursor: default;
+  background-color: lightgrey;
+}
+
+.selected_card_page {
+  border: 1px solid #d5d7d9;
+  margin: 8rem 1rem;
+  width: auto;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.selected {
+  background-color: #d5d7d9;
+}
+
+.flash_bar {
+  max-width: 380px;
+  min-width: 380px;
 }
 
 @media screen and (max-width: 600px) {

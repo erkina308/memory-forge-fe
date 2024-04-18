@@ -14,6 +14,7 @@ export default function Flashcards() {
   const [needLogout, setNeedLogout] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [results, setResults] = useState([]);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   const { topics } = useContext(TopicContext);
   const navigate = useNavigate();
 
@@ -29,6 +30,18 @@ export default function Flashcards() {
       });
     }
   }, [needLogout]);
+
+  const handleKeyDown = (event) => {
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setSelectedIndex((prevIndex) => Math.max(prevIndex - 1, -1));
+    } else if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setSelectedIndex((prevIndex) =>
+        Math.min(prevIndex + 1, results.length - 1)
+      );
+    }
+  };
 
   //get the right id for the key when rendering, used in the .map below
   function getKey(instance) {
@@ -74,7 +87,10 @@ export default function Flashcards() {
                   flashcards={flashcards}
                   setResults={setResults}
                 />
-                <FlashSearchResults results={results} />
+                <FlashSearchResults
+                  results={results}
+                  selectedIndex={selectedIndex}
+                />
               </div>
             </li>
             <li>

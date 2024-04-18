@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { deleteStudyPlan } from "../../utils/studyPlansApi";
 import timeToSeconds from "../../utils/timeToSecond";
 
-//api call for study plans are going to be in here for now but will be moved to homepage later?
-
 export default function StudyPlans({
   task,
   startDatetime,

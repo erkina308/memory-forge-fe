@@ -331,6 +331,25 @@
 .make_quiz_button_container {
   padding: 1.5rem;
 }
+
+.edit_quiz_form {
+  margin: 8rem 3rem;
+}
+
+.edit_quiz_form button,
+.make_quiz_btn {
+  padding: 1rem 2rem;
+  border: none;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  background: #d5d7d9;
+}
+
+.edit_quiz_form button:hover,
+.make_quiz_btn:hover {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 550px) {
   .interactive-quiz-list-container {
     display: flex;

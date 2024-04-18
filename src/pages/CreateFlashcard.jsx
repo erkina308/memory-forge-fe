@@ -59,7 +59,9 @@ export default function CreateFlashcard({ flashcards, setFlashcards }) {
           })}
         </select>
         <p>Selected topic: {topicInput}</p>
-        <button type="submit">Make new flashcard</button>
+        <button className="make_quiz_btn" type="submit">
+          Make new flashcard
+        </button>
       </form>
     </section>
   );

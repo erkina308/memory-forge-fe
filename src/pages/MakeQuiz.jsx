@@ -129,7 +129,9 @@ export default function MakeQuiz({ quizzes, setQuizzes }) {
           onChange={(e) => setCorrectAnswerInput(e.target.value)}
           required
         />
-        <button type="submit">Make new quiz</button>
+        <button className="make_quiz_btn" type="submit">
+          Make new quiz
+        </button>
         {submitBtnClicked && !isUnique() && <p>All inputs must be unique.</p>}
       </form>
     </section>
