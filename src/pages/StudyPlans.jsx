@@ -65,6 +65,11 @@ export default function StudyPlans({
     }, 2000);
   }
 
+  if (showConfirmation) {
+    document.body.classList.add("modal-open");
+  } else {
+    document.body.classList.remove("modal-open");
+  }
   return (
     <div className="study-plan">
       <h2>{task}</h2>

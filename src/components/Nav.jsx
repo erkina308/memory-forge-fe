@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { jwtDecode } from "jwt-decode";
 import { MdOutlineKeyboardArrowUp } from "react-icons/md";
 
@@ -13,6 +13,23 @@ export default function Nav() {
   const [needLogout, setNeedLogout] = useState(false);
 
   const navigate = useNavigate();
+  const menuRef = useRef();
+
+  //useEffect to handle click anywhere other than the menu to close menu
+  useEffect(() => {
+    const handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        setIsOpen(false);
+        setUserBtnOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -53,7 +70,7 @@ export default function Nav() {
             <Link to={"/tasks"}>Tasks</Link>
           </li>
         </ul>
-        <div className="username_button_container">
+        <div ref={menuRef} className="username_button_container">
           <div
             onClick={toggleUserBtn}
             className="username_button_inner_container"
@@ -83,7 +100,7 @@ export default function Nav() {
             <Link to={"/dashboard"}>Forge</Link>
           </h1>
         </div>
-        <div className="burger_menu">
+        <div ref={menuRef} className="burger_menu">
           <div
             className={`burger_icon ${isOpen ? "open" : ""}`}
             onClick={toggleMenu}

@@ -25,6 +25,12 @@ export default function EditQuizCard({ quiz, quizzes, setQuizzes }) {
     setConfirmDelete(false);
   }
 
+  if (confirmDelete) {
+    document.body.classList.add("modal-open");
+  } else {
+    document.body.classList.remove("modal-open");
+  }
+
   return (
     <div className="quiz-card-container">
       <div className="quiz-card">

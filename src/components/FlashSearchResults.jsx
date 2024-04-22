@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-export default function FlashSearchResults({ results, selectedIndex }) {
+export default function FlashSearchResults({ results }) {
   const navigate = useNavigate();
 
   const handleClick = (selectedCard) => {
@@ -14,13 +14,9 @@ export default function FlashSearchResults({ results, selectedIndex }) {
       }`}
     >
       <ul className="search_results_ul">
-        {results.map((result, index) => {
+        {results.map((result) => {
           return (
-            <li
-              onClick={() => handleClick(result)}
-              key={result.flashcard_id}
-              className={index === selectedIndex ? "selected" : ""}
-            >
+            <li onClick={() => handleClick(result)} key={result.flashcard_id}>
               {result.question}
             </li>
           );

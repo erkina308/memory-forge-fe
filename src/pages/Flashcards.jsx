@@ -14,7 +14,6 @@ export default function Flashcards() {
   const [needLogout, setNeedLogout] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [results, setResults] = useState([]);
-  const [selectedIndex, setSelectedIndex] = useState(-1);
   const { topics } = useContext(TopicContext);
   const navigate = useNavigate();
 
@@ -89,7 +88,7 @@ export default function Flashcards() {
                 />
                 <FlashSearchResults
                   results={results}
-                  selectedIndex={selectedIndex}
+                  handleKeyDown={handleKeyDown}
                 />
               </div>
             </li>

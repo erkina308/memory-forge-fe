@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { fetchFlashcards } from "../../utils/flashcardApi";
+import { deleteFlashcard } from "../../utils/flashcardApi";
 import FlippableCard from "../components/FlippableCard";
 import Nav from "../components/Nav";
 
 export default function FlashcardTopicPage() {
   const [flashcardsByTopic, setFlashcardsByTopic] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
 
@@ -28,6 +31,32 @@ export default function FlashcardTopicPage() {
     }
   }
 
+  const confirmDeleteModal = () => {
+    setConfirmDelete(true);
+  };
+
+  const cancelDeleteModal = () => {
+    setConfirmDelete(false);
+  };
+
+  function handleFlashDelete(e, id) {
+    e.preventDefault();
+    console.log(id, "<-- id in handleFlashDelete");
+
+    const newFlashList = flashcardsByTopic.filter((card) => {
+      return card.flashcard_id !== id;
+    });
+    setFlashcardsByTopic(newFlashList);
+    deleteFlashcard(id);
+    setConfirmDelete(false);
+  }
+
+  if (confirmDelete) {
+    document.body.classList.add("modal-open");
+  } else {
+    document.body.classList.remove("modal-open");
+  }
+
   if (isLoading) <p>Page Loading...</p>;
   return (
     <section>
@@ -42,6 +71,33 @@ export default function FlashcardTopicPage() {
                   <FlippableCard card={card} />
                 </li>
               </ul>
+              <div className="flash_edit_delete_btn_container">
+                <button
+                  className="edit_flash_btn"
+                  onClick={() =>
+                    navigate("/flashcards/edit-flashcard", { state: { card } })
+                  }
+                >
+                  Edit
+                </button>
+                <button
+                  className="edit_flash_btn"
+                  onClick={(e) => confirmDeleteModal()}
+                >
+                  Delete
+                </button>
+                {confirmDelete && (
+                  <div className="confirmation-modal">
+                    <p>Are you sure you want to delete this flashcard?</p>
+                    <button
+                      onClick={(e) => handleFlashDelete(e, card.flashcard_id)}
+                    >
+                      Yes
+                    </button>
+                    <button onClick={(e) => cancelDeleteModal()}>Cancel</button>
+                  </div>
+                )}
+              </div>
             </div>
           );
         })}

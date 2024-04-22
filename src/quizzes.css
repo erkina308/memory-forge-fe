@@ -350,6 +350,16 @@
   cursor: pointer;
 }
 
+.interactive-quiz-container {
+  border: 1px solid #d5d7d9;
+  margin: 8rem 1rem;
+  width: auto;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 550px) {
   .interactive-quiz-list-container {
     display: flex;

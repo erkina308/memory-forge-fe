@@ -19,6 +19,7 @@ import TaskManager from "./components/TaskManager";
 import NewStudyPlan from "./pages/NewStudyPlan";
 import TestPage from "./pages/TestPage";
 import SelectedFlash from "./pages/SelectedFlash";
+import EditFlashcard from "./pages/EditFlashcard";
 import axios from "axios";
 
 function App() {
@@ -134,6 +135,15 @@ function App() {
             element={
               <PrivateRoute>
                 <SelectedFlash />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/flashcards/edit-flashcard"
+            element={
+              <PrivateRoute>
+                <EditFlashcard />
               </PrivateRoute>
             }
           />

@@ -22,6 +22,10 @@
 
 /* TEMPORARY */
 
+.modal-open {
+  overflow: hidden;
+}
+
 .confirmation-modal {
   position: fixed;
   top: 50%;

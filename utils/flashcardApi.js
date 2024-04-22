@@ -60,6 +60,31 @@ export const postFlashcard = async (input) => {
   }
 };
 
+//patch flashcard in db
+export const patchFlashcard = async (flashcard_id, input) => {
+  const token = localStorage.getItem("token");
+  if (!token) {
+    console.error("Token not found. User is not logged in");
+    return;
+  }
+
+  const decodedToken = jwtDecode(token);
+  const user_id = decodedToken.userId;
+
+  try {
+    const res = await memoryForgeApi.patch(
+      `/${user_id}/flashcards/${flashcard_id}`,
+      {
+        question: input.question,
+        answer: input.answer,
+      }
+    );
+    return res.data.flashcard[0];
+  } catch (err) {
+    console.error("Error:", err);
+  }
+};
+
 //search flashcards from db
 
 export const searchFlashcard = async (query) => {
@@ -81,5 +106,27 @@ export const searchFlashcard = async (query) => {
     return flashcards;
   } catch (err) {
     console.error("Error:", err);
+  }
+};
+
+//delete flashcard in db
+export const deleteFlashcard = async (flashcard_id) => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    console.error("Token not found, User is not logged in");
+  }
+
+  const decodedToken = jwtDecode(token);
+
+  const user_id = decodedToken.userId;
+
+  try {
+    const res = await memoryForgeApi.delete(
+      `/${user_id}/flashcards/${flashcard_id}`
+    );
+    return res;
+  } catch (err) {
+    console.error("Error: ", err);
   }
 };

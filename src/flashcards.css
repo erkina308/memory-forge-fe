@@ -243,6 +243,32 @@
   margin-left: 5rem;
 }
 
+.selected_flash_btns_container {
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+.flash_edit_delete_btn_container {
+  padding: 0 2rem;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.edit_flash_btn {
+  padding: 1rem 2rem;
+  border: none;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  background: #d5d7d9;
+  margin-right: 1rem;
+}
+
+.edit_flash_btn:hover {
+  cursor: pointer;
+}
+
 /* SEARCH AND RESULTS */
 .flash_search_bar_container {
   border: 1px solid #d5d7d9;
@@ -274,7 +300,7 @@
   margin-top: 0.2rem;
   top: 100%;
   left: 0%;
-  z-index: 1000;
+  z-index: 900;
   border: 1px solid #d5d7d9;
   background-color: white;
   border-radius: 8px;
@@ -306,6 +332,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 .selected {
   background-color: #d5d7d9;
