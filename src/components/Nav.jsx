@@ -14,22 +14,25 @@ export default function Nav() {
 
   const navigate = useNavigate();
   const menuRef = useRef();
+  const burgerRef = useRef();
 
   //useEffect to handle click anywhere other than the menu to close menu
   useEffect(() => {
-    const handler = (e) => {
+    const handleClickOutside = (e) => {
       if (!menuRef.current.contains(e.target)) {
-        setIsOpen(false);
         setUserBtnOpen(false);
+      }
+      if (!burgerRef.current.contains(e.target)) {
+        setIsOpen(false);
       }
     };
 
-    document.addEventListener("mousedown", handler);
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      document.removeEventListener("mousedown", handler);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
-  });
+  }, [menuRef, burgerRef, setUserBtnOpen, setIsOpen]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -61,10 +64,10 @@ export default function Nav() {
             <Link to={"/dashboard"}>Home</Link>
           </li>
           <li>
-            <Link to={"/flashcards"}>About</Link>
+            <Link to={"/flashcards"}>Flashcards</Link>
           </li>
           <li>
-            <Link to={"/quizzes"}>Contact</Link>
+            <Link to={"/quizzes"}>Quizzes</Link>
           </li>
           <li>
             <Link to={"/tasks"}>Tasks</Link>
@@ -82,9 +85,6 @@ export default function Nav() {
             className={`user_btn_arrow ${userBtnOpen ? "open" : ""}`}
           />
           <div className={`user_links ${userBtnOpen ? "open" : ""}`}>
-            <li>
-              <a>Settings</a>
-            </li>
             <li onClick={() => setNeedLogout(true)}>
               <a>Logout</a>
             </li>
@@ -100,7 +100,7 @@ export default function Nav() {
             <Link to={"/dashboard"}>Forge</Link>
           </h1>
         </div>
-        <div ref={menuRef} className="burger_menu">
+        <div ref={burgerRef} className="burger_menu">
           <div
             className={`burger_icon ${isOpen ? "open" : ""}`}
             onClick={toggleMenu}
@@ -114,16 +114,13 @@ export default function Nav() {
               <Link to={"/dashboard"}>Home</Link>
             </li>
             <li>
-              <Link to={"/flashcards"}>About</Link>
+              <Link to={"/flashcards"}>Flashcards</Link>
             </li>
             <li>
-              <Link to={"/quizzes"}>Contact</Link>
+              <Link to={"/quizzes"}>Quizzes</Link>
             </li>
             <li>
               <Link to={"/tasks"}>Tasks</Link>
-            </li>
-            <li>
-              <a>Settings</a>
             </li>
             <li onClick={() => setNeedLogout(true)}>
               <a>Logout</a>

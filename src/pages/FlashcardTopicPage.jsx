@@ -63,19 +63,21 @@ export default function FlashcardTopicPage() {
       <Nav />
 
       <div className="links-listedcards-container topic-page-container">
-        {flashcardsByTopic.map((card) => {
+        {flashcardsByTopic.map((flashcard) => {
           return (
-            <div key={getKey(card)}>
+            <div key={getKey(flashcard)}>
               <ul className="flashcard-list">
                 <li>
-                  <FlippableCard card={card} />
+                  <FlippableCard card={flashcard} />
                 </li>
               </ul>
               <div className="flash_edit_delete_btn_container">
                 <button
                   className="edit_flash_btn"
                   onClick={() =>
-                    navigate("/flashcards/edit-flashcard", { state: { card } })
+                    navigate("/flashcards/edit-flashcard", {
+                      state: { flashcard },
+                    })
                   }
                 >
                   Edit
@@ -90,7 +92,9 @@ export default function FlashcardTopicPage() {
                   <div className="confirmation-modal">
                     <p>Are you sure you want to delete this flashcard?</p>
                     <button
-                      onClick={(e) => handleFlashDelete(e, card.flashcard_id)}
+                      onClick={(e) =>
+                        handleFlashDelete(e, flashcard.flashcard_id)
+                      }
                     >
                       Yes
                     </button>

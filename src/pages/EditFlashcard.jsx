@@ -6,7 +6,7 @@ import Nav from "../components/Nav";
 export default function EditFlashcard() {
   const location = useLocation();
   const navigate = useNavigate();
-  const { question, answer, flashcard_id, topic } = location.state.card;
+  const { question, answer, flashcard_id, topic } = location.state.flashcard;
 
   const [questionInput, setQuestionInput] = useState(question);
   const [answerInput, setAnswerInput] = useState(answer);

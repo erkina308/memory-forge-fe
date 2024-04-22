@@ -187,10 +187,6 @@ nav li a:hover {
   transition: all 0.3 ease-in-out;
 }
 
-.menu_links li:nth-child(4) {
-  border-bottom: 1px solid #d5d7d9;
-}
-
 .menu_links li {
   cursor: pointer;
 }

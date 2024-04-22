@@ -73,14 +73,6 @@ export default function Flashcards() {
         <div className="flashcards-links-container">
           <ul>
             <li>
-              <Expandable text={"Make new flashcard"}>
-                <CreateFlashcard
-                  flashcards={flashcards}
-                  setFlashcards={setFlashcards}
-                />
-              </Expandable>
-            </li>
-            <li>
               <div className="flashcard_search_container">
                 <FlashSearchBar
                   flashcards={flashcards}
@@ -93,7 +85,22 @@ export default function Flashcards() {
               </div>
             </li>
             <li>
-              <Link to={"/revision-flashcards"}>Revision</Link>
+              <Expandable text={"Make new flashcard"}>
+                <CreateFlashcard
+                  flashcards={flashcards}
+                  setFlashcards={setFlashcards}
+                />
+              </Expandable>
+            </li>
+            <li>
+              <div className="expandable_button_container">
+                <button
+                  className="expandable_button"
+                  onClick={() => navigate("/revision-flashcards")}
+                >
+                  Revision
+                </button>
+              </div>
             </li>
           </ul>
         </div>

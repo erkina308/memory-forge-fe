@@ -305,7 +305,7 @@
 }
 
 .quiz-nav-inner-card {
-  border: 2px solid green;
+  border: 2px solid rgb(73, 162, 235);
   display: flex;
   justify-content: center;
   align-items: center;
