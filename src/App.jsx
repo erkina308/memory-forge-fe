@@ -3,7 +3,7 @@ import { TopicContext } from "./contexts/TopicContext";
 import { Routes, Route } from "react-router-dom";
 import { fetchAllTopics } from "../utils/topicsApi";
 import PrivateRoute from "../authentication/PrivateRoute";
-// import Register from "./pages/authPages/Register";
+import Register from "./pages/authPages/Register";
 import Login from "./pages/authPages/Login";
 import Dashboard from "./pages/Dashboard";
 import Flashcards from "./pages/Flashcards";
@@ -89,7 +89,7 @@ function App() {
         <Routes>
           <Route path="/test" element={<TestPage />} />
           <Route path="/" element={<Homepage />} />
-          {/* <Route path="/register" element={<Register />} /> */}
+          <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           {/* Redirect to login if user tries to access private routes without authentication */}
 

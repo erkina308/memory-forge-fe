@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext, Fragment } from "react";
 import { TopicContext } from "../contexts/TopicContext";
 import { fetchFlashcards } from "../../utils/flashcardApi";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import FlippableCard from "../components/FlippableCard";
 import CreateFlashcard from "./CreateFlashcard";
 import Expandable from "../components/Expandable";
@@ -85,7 +85,7 @@ export default function Flashcards() {
               </div>
             </li>
             <li>
-              <Expandable text={"Make new flashcard"}>
+              <Expandable text={"Make new flashcard"} arrayProp={"flashcards"}>
                 <CreateFlashcard
                   flashcards={flashcards}
                   setFlashcards={setFlashcards}

@@ -23,7 +23,7 @@ export default function ViewQuiz() {
       <div className="view_quiz_page">
         <div className="quiz_expandable_container">
           <div className="make_quiz_button_container">
-            <Expandable text={"Make a quiz"}>
+            <Expandable text={"Make a quiz"} arrayProp={"quizzes"}>
               <MakeQuiz quizzes={quizzes} setQuizzes={setQuizzes} />
             </Expandable>
           </div>

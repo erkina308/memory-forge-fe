@@ -17,19 +17,21 @@ export default function Quizzes() {
 
   if (isLoading) return <p>Page Loading...</p>;
 
+  const navigateToStartQuiz = () => {
+    if (quizzes.length === 0) {
+      console.log("no quizzes");
+    } else {
+      navigate("/quizzes/quiz", { state: { quizzes } });
+    }
+  };
+
   return (
     <section>
       <Nav />
       <div className="quiz-navigation-card">
         <div className="quiz-nav-inner-card">
           <ul className="quizzes-main-page-navigation">
-            <li
-              onClick={() => {
-                navigate("/quizzes/quiz", { state: { quizzes } });
-              }}
-            >
-              Start quiz
-            </li>
+            <li onClick={navigateToStartQuiz}>Start quiz</li>
             <li>
               <Link to={"/quizzes/view-quizzes"}>
                 View and edit questions and answers
