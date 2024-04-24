@@ -10,8 +10,8 @@ export default function ViewQuiz() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetchQuizzes().then((quizzes) => {
-      setQuizzes(quizzes);
+    fetchQuizzes().then((data) => {
+      setQuizzes(data);
       setIsLoading(false);
     });
   }, []);

@@ -17,8 +17,8 @@ export default function EditQuizCard({ quiz, quizzes, setQuizzes }) {
   function handleQuizDelete(e, id) {
     e.preventDefault();
 
-    const newQuizList = quizzes.filter((quiz) => {
-      return quiz.quiz_id !== id;
+    const newQuizList = quizzes.filter((selectedQuiz) => {
+      return selectedQuiz.quiz_id !== id;
     });
     setQuizzes(newQuizList);
     deleteQuiz(id);

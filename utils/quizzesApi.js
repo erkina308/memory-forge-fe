@@ -78,6 +78,7 @@ export const patchQuiz = async (quiz_id, input) => {
 
 //delete quiz in db
 export const deleteQuiz = async (quiz_id) => {
+  console.log("delete quiz invoked");
   const token = localStorage.getItem("token");
 
   if (!token) {

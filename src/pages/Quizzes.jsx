@@ -31,7 +31,7 @@ export default function Quizzes() {
       <div className="quiz-navigation-card">
         <div className="quiz-nav-inner-card">
           <ul className="quizzes-main-page-navigation">
-            <li onClick={navigateToStartQuiz}>Start quiz</li>
+            <li onClick={() => navigateToStartQuiz()}>Start quiz</li>
             <li>
               <Link to={"/quizzes/view-quizzes"}>
                 View and edit questions and answers
