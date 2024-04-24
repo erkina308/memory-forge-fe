@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import validator from "validator";
 
 const RegisterForm = () => {
   const [username, setUsername] = useState("");
@@ -38,46 +39,75 @@ const RegisterForm = () => {
     }
   };
 
+  const areAllInputsEmpty = () => {
+    return (
+      username.trim() === "" && email.trim() === "" && password.trim() === ""
+    );
+  };
+
   return (
     <div>
-      <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
+      <nav className="nav_bar">
+        <div className="memory-forge-logo-register">
+          <h1 className="memory">
+            <a>Memory</a>
+          </h1>
+          <h1 className="forge">
+            <a>Forge</a>
+          </h1>
         </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+        <div className="nav-container">
+          <Link to={"/login"}>Login</Link>
         </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+      </nav>
+      <div className="login-container">
+        <div className="login_card">
+          <h2>Register</h2>
+          <div className="login-form">
+            <form className="form-for-login" onSubmit={handleSubmit}>
+              <div>
+                <label>Username:</label>
+                <input
+                  type="text"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </div>
+              <div>
+                <label>Email:</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div>
+                <label>Password:</label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={areAllInputsEmpty() || !validator.isEmail(email)}
+              >
+                Register
+              </button>
+            </form>
+            {errors.length > 0 && (
+              <div>
+                <ul className="error_ul">
+                  {errors.map((error, index) => (
+                    <li key={index}>{error.msg || error}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
-        <button type="submit">Register</button>
-      </form>
-      {errors.length > 0 && (
-        <div>
-          <h3>Errors:</h3>
-          <ul>
-            {errors.map((error, index) => (
-              <li key={index}>{error.msg || error}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+      </div>
     </div>
   );
 };

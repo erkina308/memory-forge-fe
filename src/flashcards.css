@@ -366,6 +366,12 @@
   }
 }
 
+/* @media screen and (max-width: 485px){
+  .flashcards_page_container {
+
+  }
+} */
+
 @media screen and (max-width: 890px) {
   .flash-by-topic-card-container {
     display: flex;

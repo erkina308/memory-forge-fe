@@ -20,6 +20,7 @@ import NewStudyPlan from "./pages/NewStudyPlan";
 import TestPage from "./pages/TestPage";
 import SelectedFlash from "./pages/SelectedFlash";
 import EditFlashcard from "./pages/EditFlashcard";
+import AllFlashcards from "./pages/AllFlashcards";
 import axios from "axios";
 
 function App() {
@@ -144,6 +145,15 @@ function App() {
             element={
               <PrivateRoute>
                 <EditFlashcard />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/flashcards/all-flashcards"
+            element={
+              <PrivateRoute>
+                <AllFlashcards />
               </PrivateRoute>
             }
           />

@@ -2,7 +2,6 @@ import { useState, useEffect, useContext, Fragment } from "react";
 import { TopicContext } from "../contexts/TopicContext";
 import { fetchFlashcards } from "../../utils/flashcardApi";
 import { useNavigate } from "react-router-dom";
-import FlippableCard from "../components/FlippableCard";
 import CreateFlashcard from "./CreateFlashcard";
 import Expandable from "../components/Expandable";
 import Nav from "../components/Nav";
@@ -16,6 +15,8 @@ export default function Flashcards() {
   const [results, setResults] = useState([]);
   const { topics } = useContext(TopicContext);
   const navigate = useNavigate();
+
+  const key = 1000;
 
   //api call for flashcards
   useEffect(() => {
@@ -124,20 +125,16 @@ export default function Flashcards() {
               <Fragment key={topic.topic_id}></Fragment>
             )
           )}
-        </div>
-
-        <div className="links-listedcards-container">
-          {flashcards.map((card) => {
-            return (
-              <div key={getKey(card)}>
-                <ul className="flashcard-list">
-                  <li>
-                    <FlippableCard card={card} />
-                  </li>
-                </ul>
-              </div>
-            );
-          })}
+          <div
+            className="topic-card"
+            key={key}
+            onClick={() => {
+              navigate(`/flashcards/all-flashcards`);
+            }}
+          >
+            <h1>All Flashcards</h1>
+            <p>Card count: {flashcards.length}</p>
+          </div>
         </div>
       </div>
     </section>
