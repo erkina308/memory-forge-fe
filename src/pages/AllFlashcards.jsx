@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { deleteFlashcard } from "../../utils/flashcardApi";
 import { fetchFlashcards } from "../../utils/flashcardApi";
 import FlippableCard from "../components/FlippableCard";
@@ -13,6 +13,8 @@ export default function AllFlashcards() {
   const [postsPerPage, setPostsPerPage] = useState(6);
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+
+  // const flashcardsRef = useRef(null);
 
   useEffect(() => {
     fetchFlashcards().then((data) => {
@@ -58,6 +60,10 @@ export default function AllFlashcards() {
   } else {
     document.body.classList.remove("modal-open");
   }
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [currentPage]);
 
   if (isLoading) <p>Page Loading...</p>;
   return (
@@ -107,12 +113,14 @@ export default function AllFlashcards() {
             </div>
           );
         })}
-        <Pagination
-          totalPosts={flashcards.length}
-          postsPerPage={postsPerPage}
-          setCurrentPage={setCurrentPage}
-          currentPage={currentPage}
-        />
+        {flashcards.length > postsPerPage ? (
+          <Pagination
+            totalPosts={flashcards.length}
+            postsPerPage={postsPerPage}
+            setCurrentPage={setCurrentPage}
+            currentPage={currentPage}
+          />
+        ) : null}
       </div>
     </section>
   );

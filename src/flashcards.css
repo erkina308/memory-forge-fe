@@ -33,8 +33,10 @@
 }
 
 #flashcard-revision {
-  width: 100vw;
-  height: 100vh;
+  border: 1px solid #d5d7d9;
+  margin: 4rem 1rem;
+  width: auto;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,6 +48,10 @@
   justify-content: center;
   align-items: center;
   padding: 5rem;
+}
+
+.revision_and_btn_container {
+  margin: 2rem 0;
 }
 
 /* TEST */
@@ -142,7 +148,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 
   margin-top: 5rem;
   padding: 1.75rem;
@@ -339,8 +345,7 @@
 }
 
 .flash_bar {
-  max-width: 380px;
-  min-width: 380px;
+  width: 380px;
 }
 
 @media screen and (max-width: 600px) {
@@ -366,11 +371,18 @@
   }
 }
 
-/* @media screen and (max-width: 485px){
-  .flashcards_page_container {
-
+@media screen and (max-width: 500px) {
+  .flashcards_search_container {
+    max-width: 300px;
+    min-width: 300px;
   }
-} */
+  .revision_and_btn_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+}
 
 @media screen and (max-width: 890px) {
   .flash-by-topic-card-container {
@@ -393,5 +405,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .flash_bar {
+    width: auto;
   }
 }

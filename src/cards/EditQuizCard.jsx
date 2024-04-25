@@ -34,8 +34,10 @@ export default function EditQuizCard({ quiz, quizzes, setQuizzes }) {
   return (
     <div className="quiz-card-container">
       <div className="quiz-card">
-        <h1 className="quiz-card-question">Question: </h1>
-        <p className="quiz-card-answer">{quiz.question}</p>
+        <div className="quiz-ans-q-container q-container">
+          <h1 className="quiz-card-question">Question: </h1>
+          <p className="quiz-card-answer">{quiz.question}</p>
+        </div>
         <div className="quiz-card-choice-container">
           <div>
             <h1 className="quiz-card-choices">Choices: </h1>
@@ -52,7 +54,7 @@ export default function EditQuizCard({ quiz, quizzes, setQuizzes }) {
             })}
           </div>
         </div>
-        <div>
+        <div className="quiz-ans-q-container">
           <h2 className="quiz-card-answer-title">Correct answer:</h2>
           <p className="quiz-card-answer">{quiz.correct_answer}</p>
         </div>

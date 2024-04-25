@@ -69,9 +69,9 @@ export default function Nav() {
           <li>
             <Link to={"/quizzes"}>Quizzes</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to={"/tasks"}>Tasks</Link>
-          </li>
+          </li> */}
         </ul>
         <div ref={menuRef} className="username_button_container">
           <div
@@ -119,9 +119,9 @@ export default function Nav() {
             <li>
               <Link to={"/quizzes"}>Quizzes</Link>
             </li>
-            <li>
+            {/* <li>
               <Link to={"/tasks"}>Tasks</Link>
-            </li>
+            </li> */}
             <li onClick={() => setNeedLogout(true)}>
               <a>Logout</a>
             </li>

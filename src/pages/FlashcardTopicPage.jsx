@@ -61,6 +61,15 @@ export default function FlashcardTopicPage() {
   return (
     <section>
       <Nav />
+      <div style={{ marginTop: "8rem" }}>
+        <button
+          onClick={() => {
+            navigate("/flashcards");
+          }}
+        >
+          Back to flashcards
+        </button>
+      </div>
 
       <div className="links-listedcards-container topic-page-container">
         {flashcardsByTopic.map((flashcard) => {

@@ -13,10 +13,14 @@ export default function Quiz() {
   return (
     <section>
       <Nav />
+      <div className="return_btn_container">
+        <button className="return_to_prev_page_btn" onClick={returnToQuizzes}>
+          Return
+        </button>
+      </div>
       <div className="interactive-quiz-container">
         <InteractiveQuizCard quizzes={location.state.quizzes} />
       </div>
-      <button onClick={returnToQuizzes}>Return</button>
     </section>
   );
 }

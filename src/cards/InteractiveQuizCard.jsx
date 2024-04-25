@@ -95,7 +95,7 @@ export default function InteractiveQuizCard({ quizzes }) {
                 {question.choices[3]}
               </li>
             </ul>
-            <button className="edit_flash_btn" onClick={nextQ}>
+            <button className="edit_flash_btn next-q-btn" onClick={nextQ}>
               Next Question
             </button>
           </>

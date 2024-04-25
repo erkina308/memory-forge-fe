@@ -37,19 +37,29 @@ export default function FlashcardRevision() {
     }); //subtracts 1 from the previous index but ensures that it doesn't go below 0 the first index
   };
 
+  const returnToQuizzes = () => {
+    navigate("/flashcards");
+  };
   if (isLoading) return <p>Page Loading...</p>;
   return (
     <div>
       <Nav />
+      <div className="return_btn_container">
+        <button className="return_to_prev_page_btn" onClick={returnToQuizzes}>
+          Return
+        </button>
+      </div>
       <section id="flashcard-revision">
-        <FlippableCard card={flashcards[currentCardIndex]} />
-        <div className="buttons_container">
-          <button className="previous-button" onClick={handlePreviousCard}>
-            <IoCaretBack />
-          </button>
-          <button className="next-button" onClick={handleNextCard}>
-            <IoCaretForward />
-          </button>
+        <div className="revision_and_btn_container">
+          <FlippableCard card={flashcards[currentCardIndex]} />
+          <div className="buttons_container">
+            <button className="previous-button" onClick={handlePreviousCard}>
+              <IoCaretBack />
+            </button>
+            <button className="next-button" onClick={handleNextCard}>
+              <IoCaretForward />
+            </button>
+          </div>
         </div>
       </section>
     </div>
