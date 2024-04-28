@@ -255,6 +255,67 @@ form {
   background: #a5a5a5;
 }
 
+/* HOMEPAGE */
+
+.homepage_container {
+  width: auto;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.homepage_title {
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.homepage_button_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.homepage_btn {
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 0.9rem;
+}
+
+.homepage_btn:hover {
+  cursor: pointer;
+  background-color: #d5d7d9;
+}
+
+.homepage_btn a {
+  text-decoration: none;
+  color: black;
+}
+
+.homepage_btn a:visited {
+  color: black;
+}
+
+@media screen and (max-width: 520px) {
+  .homepage_title {
+    font-size: 1.7rem;
+  }
+  .homepage_btn {
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (max-width: 435px) {
+  .homepage_title {
+    font-size: 1.4rem;
+  }
+  .homepage_btn {
+    font-size: 0.9rem;
+  }
+}
 @media screen and (max-width: 500px) {
   .login_card {
     width: 300px;
