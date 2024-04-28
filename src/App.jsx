@@ -48,7 +48,7 @@ function App() {
       try {
         // Make a request to your backend to refresh the token
         const response = await axios.post(
-          "http://localhost:3000/auth/refresh-token",
+          "https://memory-forge-be.onrender.com/auth/refresh-token",
           null, // No request body
           { headers: { Authorization: `Bearer ${token}` } } // Include token in headers
         );

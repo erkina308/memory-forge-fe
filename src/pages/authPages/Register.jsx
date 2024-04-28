@@ -14,11 +14,14 @@ const RegisterForm = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3000/auth/register", {
-        username,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://memory-forge-be.onrender.com/auth/register",
+        {
+          username,
+          email,
+          password,
+        }
+      );
       const { token } = response.data;
       localStorage.setItem("token", token);
       navigate("/dashboard");

@@ -11,10 +11,13 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("http://localhost:3000/auth/login", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        "https://memory-forge-be.onrender.com/auth/login",
+        {
+          username,
+          password,
+        }
+      );
       const { token } = response.data;
 
       // Store the token in localStorage

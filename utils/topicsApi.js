@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const memoryForgeTopicApi = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://memory-forge-be.onrender.com",
 });
 
 //fetch topics from database
