@@ -44,7 +44,7 @@ const RegisterForm = () => {
 
   const areAllInputsEmpty = () => {
     return (
-      username.trim() === "" && email.trim() === "" && password.trim() === ""
+      username.trim() === "" || email.trim() === "" || password.trim() === ""
     );
   };
 

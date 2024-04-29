@@ -31,6 +31,10 @@ const Login = () => {
     }
   };
 
+  const areInputsEmpty = () => {
+    return username.trim() === "" || password.trim() === "";
+  };
+
   return (
     <section id="login">
       <nav className="nav_bar">
@@ -63,7 +67,9 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <button type="submit">Login</button>
+              <button type="submit" disabled={areInputsEmpty()}>
+                Login
+              </button>
             </form>
           </div>
         </div>
