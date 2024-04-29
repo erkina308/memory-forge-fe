@@ -40,6 +40,7 @@ export default function FlashcardRevision() {
   const returnToQuizzes = () => {
     navigate("/flashcards");
   };
+
   if (isLoading) return <p>Page Loading...</p>;
   return (
     <div>

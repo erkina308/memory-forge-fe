@@ -6,6 +6,7 @@ import Nav from "../components/Nav";
 export default function Quizzes() {
   const [quizzes, setQuizzes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [buttonClicked, setButtonClicked] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,10 +19,10 @@ export default function Quizzes() {
   if (isLoading) return <p>Page Loading...</p>;
 
   const navigateToStartQuiz = () => {
-    if (quizzes.length === 0) {
-      console.log("no quizzes");
-    } else {
+    if (quizzes && quizzes.length > 0) {
       navigate("/quizzes/quiz", { state: { quizzes } });
+    } else {
+      setButtonClicked(true);
     }
   };
 
@@ -31,13 +32,18 @@ export default function Quizzes() {
       <div className="quiz-navigation-card">
         <div className="quiz-nav-inner-card">
           <ul className="quizzes-main-page-navigation">
-            <li onClick={() => navigateToStartQuiz()}>Start quiz</li>
+            <li onClick={navigateToStartQuiz}>Start quiz</li>
             <li>
               <Link to={"/quizzes/view-quizzes"}>
                 View and edit questions and answers
               </Link>
             </li>
           </ul>
+          {buttonClicked && quizzes.length === 0 && (
+            <p style={{ alignSelf: "flex-start", padding: "1rem" }}>
+              No quizzes yet
+            </p>
+          )}
         </div>
       </div>
       <div>{/* <Link to={"/quizzes/make-a-quiz"}>Make a Quiz</Link> */}</div>

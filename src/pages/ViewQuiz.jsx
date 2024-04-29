@@ -10,6 +10,7 @@ import Pagination from "../components/Pagination";
 export default function ViewQuiz() {
   const [quizzes, setQuizzes] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [buttonClicked, setButtonClicked] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage, setPostsPerPage] = useState(4);
   const navigate = useNavigate();
@@ -30,6 +31,15 @@ export default function ViewQuiz() {
   }, [currentPage]);
 
   if (isLoading) return <p>Page Loading...</p>;
+
+  const handleNavigate = () => {
+    if (quizzes && quizzes.length > 0) {
+      navigate("/quizzes/quiz", { state: { quizzes } });
+    } else {
+      setButtonClicked(true);
+    }
+  };
+
   return (
     <div>
       <Nav />
@@ -42,19 +52,13 @@ export default function ViewQuiz() {
           </div>
           <div className="make_quiz_button_container">
             <div className="expandable_button_container">
-              <button
-                className="expandable_button"
-                onClick={() => {
-                  if (currentQuizzes.length === 0) {
-                    console.log("no quizzes");
-                  } else {
-                    navigate("/quizzes/quiz", { state: { quizzes } });
-                  }
-                }}
-              >
+              <button className="expandable_button" onClick={handleNavigate}>
                 Start quiz
               </button>
             </div>
+            {buttonClicked && quizzes.length === 0 && (
+              <p style={{ paddingTop: "1rem" }}>No quizzes yet</p>
+            )}
           </div>
         </div>
         <div className="edit_quiz_cards_container">

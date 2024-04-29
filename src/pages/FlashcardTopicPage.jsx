@@ -56,18 +56,16 @@ export default function FlashcardTopicPage() {
   } else {
     document.body.classList.remove("modal-open");
   }
-
+  const returnToQuizzes = () => {
+    navigate("/flashcards");
+  };
   if (isLoading) <p>Page Loading...</p>;
   return (
     <section>
       <Nav />
-      <div style={{ marginTop: "8rem" }}>
-        <button
-          onClick={() => {
-            navigate("/flashcards");
-          }}
-        >
-          Back to flashcards
+      <div className="return_btn_container">
+        <button className="return_to_prev_page_btn" onClick={returnToQuizzes}>
+          Return
         </button>
       </div>
 

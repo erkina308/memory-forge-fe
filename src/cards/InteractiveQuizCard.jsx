@@ -101,10 +101,10 @@ export default function InteractiveQuizCard({ quizzes }) {
           </>
         )}
         {result ? (
-          <>
+          <div className="completed_quiz_container">
             <h2>Well done for completing the quiz</h2>
             <button onClick={resetQ}>Reset</button>
-          </>
+          </div>
         ) : (
           <></>
         )}

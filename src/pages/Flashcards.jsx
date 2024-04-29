@@ -13,6 +13,7 @@ export default function Flashcards() {
   const [needLogout, setNeedLogout] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [results, setResults] = useState([]);
+  const [buttonClicked, setButtonClicked] = useState(false);
   const { topics } = useContext(TopicContext);
   const navigate = useNavigate();
 
@@ -62,6 +63,15 @@ export default function Flashcards() {
     return flashcardCounts;
   };
 
+  const handleNavigate = () => {
+    if (flashcards && flashcards.length > 0) {
+      navigate("/revision-flashcards");
+      setButtonClicked(false);
+    } else {
+      setButtonClicked(true);
+    }
+  };
+
   //rendering flashcards if page has loaded
   if (isLoading) return <p>Page Loading...</p>;
 
@@ -95,12 +105,12 @@ export default function Flashcards() {
             </li>
             <li>
               <div className="expandable_button_container">
-                <button
-                  className="expandable_button"
-                  onClick={() => navigate("/revision-flashcards")}
-                >
+                <button className="expandable_button" onClick={handleNavigate}>
                   Revision
                 </button>
+                {buttonClicked && flashcards.length === 0 && (
+                  <p style={{ paddingTop: "0.9rem" }}>No flashcards yet</p>
+                )}
               </div>
             </li>
           </ul>

@@ -383,6 +383,35 @@
   align-items: center;
 }
 
+.edit_flash_btn.next-q-btn {
+  margin: 0;
+}
+
+.completed_quiz_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.completed_quiz_container h2 {
+  font-weight: 400;
+  color: white;
+}
+
+.completed_quiz_container button {
+  padding: 1rem 2rem;
+  border: none;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+.completed_quiz_container button:hover {
+  cursor: pointer;
+  background-color: #d5d7d9;
+}
+
 @media screen and (max-width: 550px) {
   .interactive-quiz-list-container {
     display: flex;

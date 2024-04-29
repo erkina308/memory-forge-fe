@@ -45,8 +45,6 @@ export default function AllFlashcards() {
 
   function handleFlashDelete(e, id) {
     e.preventDefault();
-    console.log(id, "<-- id in handleFlashDelete");
-
     const newFlashList = flashcards.filter((card) => {
       return card.flashcard_id !== id;
     });
@@ -64,12 +62,18 @@ export default function AllFlashcards() {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
-
+  const returnToQuizzes = () => {
+    navigate("/flashcards");
+  };
   if (isLoading) <p>Page Loading...</p>;
   return (
     <section>
       <Nav />
-
+      <div className="return_btn_container">
+        <button className="return_to_prev_page_btn" onClick={returnToQuizzes}>
+          Return
+        </button>
+      </div>
       <div className="links-listedcards-container topic-page-container">
         {currentCards.map((flashcard) => {
           return (
