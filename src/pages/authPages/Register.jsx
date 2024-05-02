@@ -69,26 +69,26 @@ const RegisterForm = () => {
           <div className="login-form">
             <form className="form-for-login" onSubmit={handleSubmit}>
               <div>
-                <label>Username:</label>
                 <input
                   type="text"
                   value={username}
+                  placeholder="Username"
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div>
-                <label>Email:</label>
                 <input
                   type="email"
                   value={email}
+                  placeholder="Email"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div>
-                <label>Password:</label>
                 <input
                   type="password"
                   value={password}
+                  placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
